@@ -80,6 +80,7 @@
       }
       html {
         scroll-behavior: smooth;
+        overflow-x: hidden;
       }
       body {
         background-color: var(--bg-primary);
@@ -2369,6 +2370,7 @@
         background-color: var(--bg-primary);
         padding: 80px 20px;
         position: relative;
+        overflow: hidden;
       }
       .founders-header {
         text-align: center;
@@ -2398,7 +2400,7 @@
         position: relative;
         z-index: 2;
       }
-      @media (max-width: 480px) {
+      @media (max-width: 768px) {
         .founders-cards-container {
           grid-template-columns: 1fr;
         }
@@ -6380,8 +6382,19 @@
             scrollTrigger: { trigger: "#portfolio", start: "top 80%" },
           });
 
-          // Stats
-          gsap.from(".anim-stat", {
+          // Stats in About section
+          gsap.from("#about .anim-stat", {
+            scale: 0.6,
+            opacity: 0,
+            duration: 0.6,
+            ease: "back.out(1.7)",
+            stagger: 0.1,
+            clearProps: "all",
+            scrollTrigger: { trigger: "#about", start: "top 80%" },
+          });
+
+          // Stats in Stats section
+          gsap.from("#stats .anim-stat", {
             scale: 0.6,
             opacity: 0,
             duration: 0.6,
