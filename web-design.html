@@ -375,20 +375,28 @@
         border: none;
       }
       @media (max-width: 900px) {
+        #hero {
+          flex-direction: column;
+          height: auto;
+          min-height: auto;
+          padding-bottom: 60px;
+        }
         .hero-right-content {
+          position: relative;
           width: 100%;
-          height: 100%;
-          left: 0;
-          opacity: 0.22;
-          z-index: 1;
+          height: auto;
+          left: auto;
+          opacity: 1;
+          z-index: 10;
+          order: 2;
+          margin-top: 40px;
+          margin-bottom: 20px;
         }
         .hero-right-content::before {
-          background: radial-gradient(
-            circle at 50% 50%,
-            rgba(6, 6, 8, 0.3) 0%,
-            rgba(6, 6, 8, 0.8) 70%,
-            rgba(6, 6, 8, 1) 100%
-          );
+          display: none;
+        }
+        .hero-right-placeholder {
+          display: none;
         }
       }
       .hero-vignette {
@@ -429,7 +437,9 @@
         .hero-grid-container {
           grid-template-columns: 1fr;
           padding-top: 140px;
+          padding-bottom: 0;
           text-align: center;
+          order: 1;
         }
       }
 
