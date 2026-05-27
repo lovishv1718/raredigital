@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /google8676ef393eea3b61.html
+
+Sitemap: https://raredigital.in/sitemap.xml
