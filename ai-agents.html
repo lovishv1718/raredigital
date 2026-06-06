@@ -239,24 +239,26 @@
             pointer-events: none;
         }
         .hero-right-content {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 50%;
+            position: relative;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow: visible;
             pointer-events: auto;
             z-index: 2;
+            grid-column: 2;
+            grid-row: 1;
         }
         .hero-right-content::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(6, 6, 8, 1) 0%, rgba(6, 6, 8, 0.4) 30%, rgba(6, 6, 8, 0) 70%);
+            left: -40px;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            background: linear-gradient(to right, #060608 0%, transparent 100%);
             z-index: 3;
             pointer-events: none;
         }
@@ -278,17 +280,13 @@
                 position: relative;
                 width: 100%;
                 height: auto;
-                left: auto;
-                opacity: 1;
-                z-index: 10;
+                grid-column: 1;
+                grid-row: 2;
                 order: 2;
                 margin-top: 40px;
                 margin-bottom: 20px;
             }
             .hero-right-content::before {
-                display: none;
-            }
-            .hero-right-placeholder {
                 display: none;
             }
         }
@@ -309,17 +307,20 @@
             width: 100%; 
             max-width: 1400px; 
             margin: auto; 
-            padding: 120px 40px 40px; 
+            padding: 80px 40px 40px; 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
+            grid-template-rows: 1fr;
+            align-items: center;
             position: relative; 
             z-index: 10; 
             pointer-events: none;
+            min-height: 100vh;
         }
         @media (max-width: 900px) {
             .hero-grid-container {
                 grid-template-columns: 1fr;
-                padding-top: 140px;
+                padding-top: 100px;
                 padding-bottom: 0;
                 text-align: center;
                 order: 1;
@@ -2590,34 +2591,983 @@
             font-size: 10px;
             color: var(--text-muted);
         }
-        @media (max-width: 900px) {
-            .service-visual-container {
-                height: 380px;
+        /* --- AI Agents Redesign Visual Styles --- */
+        #hero {
+            min-height: 100vh;
+            padding-bottom: 120px;
+            background-color: #030305;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+            overflow: visible;
+        }
+
+        /* Typography Overrides */
+        .hero-h1 {
+            font-family: var(--font-serif) !important;
+            font-weight: 300 !important;
+            font-size: clamp(44px, 5.8vw, 82px) !important;
+            line-height: 1.05 !important;
+            letter-spacing: -0.03em !important;
+            color: #ffffff !important;
+            margin-bottom: 28px !important;
+        }
+
+        .hero-h1 span.gradient {
+            background: linear-gradient(135deg, #f3e8ff 0%, #d8b4fe 40%, #a855f7 80%, #7c3aed 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .hero-sub {
+            font-family: var(--font-body) !important;
+            font-size: clamp(15px, 1.3vw, 18px) !important;
+            line-height: 1.7 !important;
+            color: rgba(255, 255, 255, 0.65) !important;
+            font-weight: 300 !important;
+            max-width: 540px !important;
+            margin-bottom: 36px !important;
+        }
+
+        /* Secondary CTA play button */
+        .hero-btns .btn-secondary-outline {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            background: rgba(255, 255, 255, 0.01) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            color: #ffffff !important;
+            padding: 16px 36px !important;
+            border-radius: var(--radius-pills) !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.1em !important;
+            text-transform: uppercase !important;
+            backdrop-filter: blur(10px) !important;
+            transition: var(--transition) !important;
+        }
+        .hero-btns .btn-secondary-outline:hover {
+            background: rgba(255, 255, 255, 0.07) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .play-circle-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 2px;
+            transition: var(--transition);
+        }
+
+        .play-circle-icon svg {
+            fill: white;
+            width: 8px;
+            height: 8px;
+            transition: var(--transition);
+        }
+
+        .hero-btns .btn-secondary-outline:hover .play-circle-icon {
+            border-color: #ffffff;
+            background: #ffffff;
+        }
+
+        .hero-btns .btn-secondary-outline:hover .play-circle-icon svg {
+            fill: #060608;
+        }
+
+        /* Grid & Columns */
+        .hero-grid-container {
+            grid-template-columns: 4.8fr 5.2fr !important;
+            grid-template-rows: 1fr !important;
+            align-items: center !important;
+            padding-top: 140px !important;
+            padding-bottom: 20px !important;
+            max-width: 1440px !important;
+            min-height: 100vh !important;
+        }
+
+        .hero-left-content {
+            padding-right: 20px;
+            z-index: 10;
+        }
+
+        /* Right Side Container */
+        .hero-right-content {
+            position: relative !important;
+            width: 100% !important;
+            height: 100% !important;
+            display: flex !important;
+            justify-content: flex-end !important;
+            align-items: center !important;
+            overflow: visible !important;
+            z-index: 5 !important;
+            grid-column: 2 !important;
+            grid-row: 1 !important;
+        }
+
+        .ai-hero-visual-wrapper {
+            position: relative;
+            width: 100%;
+            height: 560px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        /* Portal background under chat window */
+        .ai-portal-container {
+            position: absolute;
+            width: 440px;
+            height: 440px;
+            left: -20px;
+            top: calc(50% - 220px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .portal-glow {
+            position: absolute;
+            inset: -40px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, rgba(99, 102, 241, 0.05) 45%, transparent 70%);
+            filter: blur(40px);
+            border-radius: 50%;
+        }
+
+        .portal-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            inset: 0;
+            transform: rotateX(60deg) rotateY(-15deg);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.1) inset;
+        }
+
+        .portal-ring.ring-2 {
+            inset: 40px;
+            border-color: rgba(99, 102, 241, 0.2);
+            animation: rotate-portal-2 15s linear infinite;
+        }
+
+        .portal-ring.ring-3 {
+            inset: 80px;
+            border-color: rgba(168, 85, 247, 0.25);
+            animation: rotate-portal-3 25s linear infinite;
+        }
+
+        @keyframes rotate-portal-2 {
+            0% { transform: rotateX(60deg) rotateY(-15deg) rotateZ(0deg); }
+            100% { transform: rotateX(60deg) rotateY(-15deg) rotateZ(360deg); }
+        }
+
+        @keyframes rotate-portal-3 {
+            0% { transform: rotateX(60deg) rotateY(-15deg) rotateZ(360deg); }
+            100% { transform: rotateX(60deg) rotateY(-15deg) rotateZ(0deg); }
+        }
+
+        /* Chat Assistant interface */
+        .ai-chat-window {
+            position: relative;
+            width: 350px;
+            height: 480px;
+            background: rgba(10, 10, 15, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.6),
+                0 0 100px rgba(168, 85, 247, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: perspective(1200px) rotateY(-12deg) rotateX(6deg);
+            transform-style: preserve-3d;
+            will-change: transform;
+            animation: float-chat 6s ease-in-out infinite;
+        }
+
+        .ai-chat-header {
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mac-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mac-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .mac-dot.red { background-color: #ef4444; }
+        .mac-dot.yellow { background-color: #eab308; }
+        .mac-dot.green { background-color: #22c55e; }
+
+        .agent-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .agent-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+
+        .agent-avatar svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .agent-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .agent-name-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .agent-name {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+        }
+
+        .agent-status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        .agent-status-text {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .agent-title {
+            font-size: 9px;
+            color: var(--text-secondary);
+        }
+
+        /* Chat Messages */
+        .ai-chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            overflow-y: auto;
+        }
+
+        .chat-bubble {
+            max-width: 85%;
+            padding: 12px 14px;
+            border-radius: 14px;
+            font-size: 11px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .chat-bubble.agent-bubble {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.9);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-bubble.user-bubble {
+            background: #7c3aed;
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            padding-bottom: 22px;
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.25);
+        }
+
+        .bubble-meta {
+            position: absolute;
+            bottom: 6px;
+            right: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .bubble-time {
+            font-size: 7.5px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .bubble-check {
+            font-size: 8px;
+            color: #c084fc;
+            letter-spacing: -1px;
+        }
+
+        /* Appointment Card */
+        .appointment-card {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .appt-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d8b4fe;
+        }
+
+        .appt-icon svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .appt-details {
+            flex-grow: 1;
+        }
+
+        .appt-date {
+            font-family: var(--font-heading);
+            font-size: 10px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 1px;
+        }
+
+        .appt-time {
+            font-size: 9px;
+            color: var(--text-secondary);
+        }
+
+        .appt-status {
+            font-family: var(--font-heading);
+            font-size: 9px;
+            font-weight: 600;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Stack of Cards */
+        .ai-cards-stack {
+            width: 270px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 10;
+            will-change: transform;
+            animation: float-stack 6s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .ai-stat-card {
+            background: rgba(10, 10, 15, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-stat-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.1) 0%, transparent 60%);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .ai-stat-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(168, 85, 247, 0.3);
+            background: rgba(15, 15, 20, 0.6);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 25px rgba(168, 85, 247, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .ai-stat-card .card-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            color: #d8b4fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ai-stat-card .card-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .ai-stat-card .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-grow: 1;
+        }
+
+        .ai-stat-card .card-label {
+            font-size: 8.5px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .ai-stat-card .card-stat {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+
+        .ai-stat-card.card-answered .card-stat {
+            color: #a855f7;
+        }
+
+        .ai-stat-card.card-leads .card-stat {
+            color: #10b981;
+        }
+
+        .ai-stat-card .card-sub {
+            font-size: 10px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .ai-stat-card .card-chart {
+            position: absolute;
+            bottom: 8px;
+            right: 14px;
+            width: 60px;
+            height: 25px;
+        }
+
+        /* Connecting lines overlay */
+        .ai-connecting-lines {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .energy-trail {
+            stroke: var(--primary-accent);
+            stroke-width: 1.5;
+            fill: none;
+            opacity: 0.35;
+            stroke-dasharray: 12 70;
+            animation: energy-pulse 6s linear infinite;
+            filter: drop-shadow(0 0 3px rgba(168, 85, 247, 0.6));
+        }
+
+        .energy-trail.trail-0 { animation-delay: 0s; }
+        .energy-trail.trail-1 { animation-delay: 1.5s; }
+        .energy-trail.trail-2 { animation-delay: 3s; }
+        .energy-trail.trail-3 { animation-delay: 4.5s; }
+
+        @keyframes energy-pulse {
+            0% { stroke-dashoffset: 200; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes float-chat {
+            0%, 100% {
+                transform: perspective(1200px) rotateY(-12deg) rotateX(6deg) translateY(0);
             }
-            .search-mockup, .ad-mockup, .browser-mockup {
-                width: 280px;
-                left: 5%;
-                top: 20px;
-            }
-            .chart-mockup, .stats-mockup, .flow-mockup {
-                width: 250px;
-                right: 5%;
-                bottom: 20px;
+            50% {
+                transform: perspective(1200px) rotateY(-12deg) rotateX(6deg) translateY(-10px);
             }
         }
-        @media (max-width: 500px) {
-            .service-visual-container {
-                height: 300px;
+
+        @keyframes float-stack {
+            0%, 100% {
+                transform: translateY(0);
             }
-            .search-mockup, .ad-mockup, .browser-mockup {
-                width: 220px;
-                left: 2%;
-                top: 10px;
+            50% {
+                transform: translateY(-8px);
             }
-            .chart-mockup, .stats-mockup, .flow-mockup {
-                width: 200px;
-                right: 2%;
-                bottom: 10px;
+        }
+
+        /* Horizontal process bar */
+        .hero-process-bar {
+            grid-column: 1 / -1;
+            margin-top: 80px;
+            background: rgba(10, 10, 14, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            z-index: 10;
+            position: relative;
+            gap: 10px;
+        }
+
+        .process-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 10px;
+        }
+
+        .process-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(168, 85, 247, 0.06);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            color: #d8b4fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .process-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .process-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .process-label {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+        }
+
+        .process-desc {
+            font-size: 10px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        .process-separator {
+            color: rgba(168, 85, 247, 0.4);
+            font-size: 14px;
+            user-select: none;
+            font-weight: 300;
+            padding: 0 4px;
+        }
+
+        /* Trusted Logos container */
+        .hero-trusted-logos {
+            grid-column: 1 / -1;
+            margin-top: 60px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            z-index: 10;
+        }
+
+        .trusted-label-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .trusted-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+        }
+
+        .trusted-label-text {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.35);
+            text-transform: uppercase;
+        }
+
+        .logos-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px 30px;
+        }
+
+        .logo-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.45;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .logo-item:hover {
+            opacity: 0.8;
+        }
+
+        .logo-item svg {
+            width: 18px;
+            height: 18px;
+            color: #ffffff;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+        }
+
+        /* Responsive Overrides */
+        /* Mobile-Only Visual Container Hidden on Desktop */
+        .mobile-only-hero-visuals {
+            display: none !important;
+        }
+
+        /* Responsive Overrides for Mobile Layout */
+        @media (max-width: 1200px) {
+            #hero {
+                padding-top: 90px !important;
+                padding-bottom: 50px !important;
+                min-height: auto !important;
+            }
+            
+            .hero-grid-container {
+                grid-template-columns: 1fr !important;
+                padding: 100px 20px 20px 20px !important;
+                gap: 0 !important;
+            }
+
+            .hero-left-content {
+                width: 100% !important;
+                padding-right: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            .hero-badge {
+                margin-bottom: 16px !important;
+            }
+
+            .hero-h1 {
+                text-align: center !important;
+                font-size: clamp(32px, 6.5vw, 44px) !important;
+                margin-bottom: 16px !important;
+                line-height: 1.1 !important;
+            }
+
+            .hero-sub {
+                text-align: center !important;
+                font-size: 13.5px !important;
+                line-height: 1.6 !important;
+                margin-bottom: 0 !important;
+                max-width: 100% !important;
+            }
+
+            /* Display Mobile Visuals Container Right After Headline */
+            .mobile-only-hero-visuals {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+                gap: 20px !important;
+                margin: 28px 0 20px 0 !important;
+            }
+
+            /* Hide Desktop Right Visual Representation & Spacer */
+            .hero-right-content {
+                display: none !important;
+            }
+            .hero-right-placeholder {
+                display: none !important;
+            }
+
+            /* Style Mobile Chat Assistant UI */
+            .mobile-chat-window {
+                transform: none !important;
+                animation: float-chat-mobile 6s ease-in-out infinite !important;
+                width: 100% !important;
+                max-width: 380px !important;
+                height: 380px !important;
+                border-radius: 16px !important;
+                border-color: rgba(255, 255, 255, 0.06) !important;
+            }
+            .mobile-chat-window .ai-chat-header {
+                padding: 12px 16px !important;
+                gap: 8px !important;
+            }
+            .mobile-chat-window .ai-chat-messages {
+                padding: 12px 16px !important;
+                gap: 10px !important;
+            }
+            .mobile-chat-window .chat-bubble {
+                padding: 8px 12px !important;
+                font-size: 10.5px !important;
+                border-radius: 12px !important;
+            }
+            .mobile-chat-window .chat-bubble.user-bubble {
+                border-bottom-right-radius: 4px !important;
+                padding-bottom: 18px !important;
+            }
+            .mobile-chat-window .appointment-card {
+                padding: 8px 10px !important;
+                margin-top: 8px !important;
+                gap: 8px !important;
+            }
+            .mobile-chat-window .appt-icon {
+                width: 22px !important;
+                height: 22px !important;
+            }
+            .mobile-chat-window .appt-icon svg {
+                width: 12px !important;
+                height: 12px !important;
+            }
+            .mobile-chat-window .appt-date {
+                font-size: 8.5px !important;
+            }
+            .mobile-chat-window .appt-time {
+                font-size: 7.5px !important;
+            }
+            .mobile-chat-window .appt-status {
+                font-size: 8px !important;
+            }
+
+            /* Style Mobile Stat Cards as 2x2 Grid Below Chat */
+            .mobile-cards-stack {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+                width: 100% !important;
+                max-width: 380px !important;
+                animation: float-stack-mobile 6s ease-in-out infinite !important;
+                animation-delay: 0.5s !important;
+            }
+            .mobile-cards-stack .ai-stat-card {
+                padding: 12px 14px !important;
+                border-radius: 12px !important;
+                gap: 10px !important;
+            }
+            .mobile-cards-stack .card-icon {
+                width: 26px !important;
+                height: 26px !important;
+                border-radius: 6px !important;
+            }
+            .mobile-cards-stack .card-icon svg {
+                width: 13px !important;
+                height: 13px !important;
+            }
+            .mobile-cards-stack .card-label {
+                font-size: 7.5px !important;
+                letter-spacing: 0.05em !important;
+            }
+            .mobile-cards-stack .card-stat {
+                font-size: 15px !important;
+            }
+            .mobile-cards-stack .card-sub {
+                font-size: 8px !important;
+            }
+            .mobile-cards-stack .card-chart {
+                display: none !important;
+            }
+
+            @keyframes float-chat-mobile {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-8px); }
+            }
+            @keyframes float-stack-mobile {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-8px); }
+            }
+
+            /* Style CTA Buttons Container Below Proof Cards */
+            .hero-btns {
+                margin-top: 16px !important;
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 10px !important;
+            }
+            .hero-btns a {
+                width: 100% !important;
+                max-width: 350px !important;
+                justify-content: center !important;
+                padding: 14px 24px !important;
+                font-size: 11px !important;
+                height: auto !important;
+            }
+
+            /* Convert Process Section into Vertical Timeline */
+            .hero-process-bar {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 20px !important;
+                padding: 24px !important;
+                margin-top: 48px !important;
+                border-radius: 16px !important;
+                position: relative !important;
+            }
+            .hero-process-bar::after {
+                content: '' !important;
+                position: absolute !important;
+                left: 42px !important;
+                top: 40px !important;
+                bottom: 40px !important;
+                width: 1px !important;
+                background: linear-gradient(to bottom, var(--primary-accent) 0%, rgba(168, 85, 247, 0.05) 100%) !important;
+                z-index: 1 !important;
+            }
+            .process-item {
+                width: 100% !important;
+                padding: 0 !important;
+                position: relative !important;
+                z-index: 2 !important;
+            }
+            .process-separator {
+                display: none !important;
+            }
+            .process-icon {
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 8px !important;
+                background: #030305 !important;
+                border-color: rgba(168, 85, 247, 0.4) !important;
+                z-index: 3 !important;
+            }
+            .process-text {
+                gap: 2px !important;
+            }
+            .process-label {
+                font-size: 10.5px !important;
+            }
+            .process-desc {
+                font-size: 9px !important;
+            }
+
+            /* Convert Trusted Logos into Horizontal Swipe Cards */
+            .hero-trusted-logos {
+                margin-top: 44px !important;
+                gap: 20px !important;
+                align-items: center !important;
+            }
+            .trusted-label-container {
+                justify-content: center !important;
+            }
+            .logos-container {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                width: 100vw !important;
+                margin-left: -20px !important;
+                margin-right: -20px !important;
+                padding: 10px 20px 20px 20px !important;
+                gap: 14px !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+            .logos-container::-webkit-scrollbar {
+                display: none !important;
+            }
+            .logo-item {
+                flex: 0 0 180px !important;
+                background: rgba(255, 255, 255, 0.02) !important;
+                border: 1px solid rgba(255, 255, 255, 0.04) !important;
+                border-radius: 12px !important;
+                padding: 12px 14px !important;
+                justify-content: center !important;
+                scroll-snap-align: center !important;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4) !important;
+                opacity: 0.65 !important;
+            }
+            .logo-item svg {
+                width: 14px !important;
+                height: 14px !important;
+            }
+            .logo-text {
+                font-size: 10px !important;
             }
         }
     </style>
@@ -2660,59 +3610,7 @@
         <div class="hero-bg">
             <div class="hero-glow" style="background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);"></div>
             <div class="hero-vignette"></div>
-        </div>
-
-        <!-- Right Side Visual Representation -->
-        <div class="hero-right-content fade-up" style="animation-delay: 0.4s;">
-            
-<div class="service-visual-container">
-    <div class="visual-glow" style="background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);"></div>
-    
-    <div class="seo-card ad-mockup anim-visual-1">
-        <div class="mockup-header">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        </div>
-        <div class="ad-user">
-            <div class="ad-avatar" style="font-size: 14px;">★</div>
-            <div>
-                <div class="ad-username">★★★★★</div>
-                <div class="ad-sponsored">— Service Business Owner, Punjab</div>
-            </div>
-        </div>
-        <div class="ad-image-placeholder">
-            <span>"Our AI agent handles 80% of inquiries without us touching a thing."</span>
-            <div class="ad-cta-bar">
-                <span class="ad-cta-text" style="font-size: 10px;">[24/7 Active] [Instant Replies] [Zero Missed Leads]</span>
-                <span class="ad-cta-btn" style="font-size: 9px; padding: 4px 8px;">Active</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="seo-card stats-mockup anim-visual-2">
-        <div class="stats-row">
-            <div class="stat-box">
-                <span class="box-label">Always Active</span>
-                <span class="box-val" style="color: #a855f7;">24/7</span>
-            </div>
-            <div class="stat-box">
-                <span class="box-label">Inquiries Handled Automatically</span>
-                <span class="box-val" style="color: #10b981;">~80%</span>
-            </div>
-        </div>
-        <div class="stats-row">
-            <div class="stat-box">
-                <span class="box-label">Replies</span>
-                <span class="box-val">Instant</span>
-            </div>
-            <div class="stat-box">
-                <span class="box-label">Missed Leads</span>
-                <span class="box-val" style="color: #10b981;">Zero</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-        </div>
+      </div>
 
         <div class="hero-grid-container">
             <!-- Left Side Content -->
@@ -2726,18 +3624,438 @@
                 <p class="hero-sub fade-up" style="animation-delay: 0.42s;">
                     We build custom-trained AI assistants for your business that answer every inquiry, qualify every lead, and book appointments — automatically, any time of day or night.
                 </p>
+
+                <!-- Mobile-Only Hero Visuals Container -->
+                <div class="mobile-only-hero-visuals">
+                    <!-- Floating AI Chat Assistant Window -->
+                    <div class="ai-chat-window mobile-chat-window">
+                        <div class="ai-chat-header">
+                            <div class="mac-dots">
+                                <span class="mac-dot red"></span>
+                                <span class="mac-dot yellow"></span>
+                                <span class="mac-dot green"></span>
+                            </div>
+                            <div class="agent-profile">
+                                <div class="agent-avatar">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    </svg>
+                                </div>
+                                <div class="agent-info">
+                                    <div class="agent-name-row">
+                                        <span class="agent-name">RARE AI AGENT</span>
+                                        <span class="agent-status-dot"></span>
+                                        <span class="agent-status-text">Online</span>
+                                    </div>
+                                    <div class="agent-title">Service Business Owner, Punjab</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-chat-messages">
+                            <div class="chat-bubble agent-bubble">
+                                Hi! How can I help you today?
+                            </div>
+                            <div class="chat-bubble user-bubble">
+                                I'd like to book a consultation for my business.
+                                <div class="bubble-meta">
+                                    <span class="bubble-time">10:30 PM</span>
+                                    <span class="bubble-check">✓✓</span>
+                                </div>
+                            </div>
+                            <div class="chat-bubble agent-bubble">
+                                Perfect! I've got you all set. Here's your appointment
+                                <div class="appointment-card">
+                                    <div class="appt-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                            <line x1="16" y1="2" x2="16" y2="6" />
+                                            <line x1="8" y1="2" x2="8" y2="6" />
+                                            <line x1="3" y1="10" x2="21" y2="10" />
+                                        </svg>
+                                    </div>
+                                    <div class="appt-details">
+                                        <div class="appt-date">Friday, May 24, 2024</div>
+                                        <div class="appt-time">11:00 AM</div>
+                                    </div>
+                                    <div class="appt-status">✓ Confirmed</div>
+                                </div>
+                            </div>
+                            <div class="chat-bubble agent-bubble">
+                                Looking forward to speaking with you!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2x2 Grid Stack of proof cards on mobile -->
+                    <div class="ai-cards-stack mobile-cards-stack">
+                        <!-- Card 1: Inquiries Handled -->
+                        <div class="ai-stat-card card-inquiries">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">INQUIRIES HANDLED</span>
+                                <div class="card-stat">24/7</div>
+                                <span class="card-sub">Every day. Every hour.</span>
+                            </div>
+                            <div class="card-chart">
+                                <svg viewBox="0 0 60 25" width="60" height="25" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M0 20 Q10 18, 15 12 T30 15 T45 5 T60 2" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Inquiries Automatically Answered -->
+                        <div class="ai-stat-card card-answered">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">INQUIRIES AUTOMATICALLY ANSWERED</span>
+                                <div class="card-stat">-80%</div>
+                                <span class="card-sub">Workload Reduced</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Response Time -->
+                        <div class="ai-stat-card card-response">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 2h14M5 22h14M19 2v4a7 7 0 0 1-14 0V2M5 22v-4a7 7 0 0 1 14 0v4" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">RESPONSE TIME</span>
+                                <div class="card-stat">Instant</div>
+                                <span class="card-sub">No more waiting</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Messaged Leads -->
+                        <div class="ai-stat-card card-leads">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <circle cx="12" cy="12" r="6" />
+                                    <circle cx="12" cy="12" r="2" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">MESSAGED LEADS</span>
+                                <div class="card-stat">Zero</div>
+                                <span class="card-sub">Left unattended</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="hero-btns fade-up" style="animation-delay: 0.62s;">
                     <a href="#contact" class="btn-primary-glow">
                         <span class="btn-arrow">➔</span>
                         <span>Get My AI Agent Built</span>
                     </a>
                     <a href="#deliverables" class="btn-secondary-outline">
-                        <span>See How It Works ↓</span>
+                        <span class="play-circle-icon">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </span>
+                        <span>See How It Works</span>
                     </a>
                 </div>
             </div>
             <!-- Right Side Spacer -->
-            <div class="hero-right-placeholder"></div>
+            <!-- Right Side Visual Representation -->
+            <div class="hero-right-content fade-up" style="animation-delay: 0.4s;">
+                <div class="ai-hero-visual-wrapper">
+                    <!-- Glowing rotating portal rings -->
+                    <div class="ai-portal-container">
+                        <div class="portal-glow"></div>
+                        <div class="portal-ring ring-1"></div>
+                        <div class="portal-ring ring-2"></div>
+                        <div class="portal-ring ring-3"></div>
+                    </div>
+
+                    <!-- SVG Connecting Lines -->
+                    <svg class="ai-connecting-lines" viewBox="0 0 500 500" width="100%" height="100%" preserveAspectRatio="none">
+                        <defs>
+                            <filter id="purple-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Curves from chat window right-edge to cards left-edge -->
+                        <path class="energy-trail trail-0" d="M 180 200 C 260 200, 300 70, 380 70" />
+                        <path class="energy-trail trail-1" d="M 180 220 C 260 220, 300 170, 380 170" />
+                        <path class="energy-trail trail-2" d="M 180 240 C 260 240, 300 270, 380 270" />
+                        <path class="energy-trail trail-3" d="M 180 260 C 260 260, 300 370, 380 370" />
+                    </svg>
+
+                    <!-- Floating AI Chat Assistant Window -->
+                    <div class="ai-chat-window">
+                        <div class="ai-chat-header">
+                            <div class="mac-dots">
+                                <span class="mac-dot red"></span>
+                                <span class="mac-dot yellow"></span>
+                                <span class="mac-dot green"></span>
+                            </div>
+                            <div class="agent-profile">
+                                <div class="agent-avatar">
+                                    <!-- Minimal star icon -->
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    </svg>
+                                </div>
+                                <div class="agent-info">
+                                    <div class="agent-name-row">
+                                        <span class="agent-name">RARE AI AGENT</span>
+                                        <span class="agent-status-dot"></span>
+                                        <span class="agent-status-text">Online</span>
+                                    </div>
+                                    <div class="agent-title">Service Business Owner, Punjab</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-chat-messages">
+                            <div class="chat-bubble agent-bubble">
+                                Hi! How can I help you today?
+                            </div>
+                            <div class="chat-bubble user-bubble">
+                                I'd like to book a consultation for my business.
+                                <div class="bubble-meta">
+                                    <span class="bubble-time">10:30 PM</span>
+                                    <span class="bubble-check">✓✓</span>
+                                </div>
+                            </div>
+                            <div class="chat-bubble agent-bubble">
+                                Perfect! I've got you all set. Here's your appointment
+                                <div class="appointment-card">
+                                    <div class="appt-icon">
+                                        <!-- Calendar icon -->
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                            <line x1="16" y1="2" x2="16" y2="6" />
+                                            <line x1="8" y1="2" x2="8" y2="6" />
+                                            <line x1="3" y1="10" x2="21" y2="10" />
+                                        </svg>
+                                    </div>
+                                    <div class="appt-details">
+                                        <div class="appt-date">Friday, May 24, 2024</div>
+                                        <div class="appt-time">11:00 AM</div>
+                                    </div>
+                                    <div class="appt-status">✓ Confirmed</div>
+                                </div>
+                            </div>
+                            <div class="chat-bubble agent-bubble">
+                                Looking forward to speaking with you!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vertical stack of 4 cards on the right -->
+                    <div class="ai-cards-stack">
+                        <!-- Card 1: Inquiries Handled -->
+                        <div class="ai-stat-card card-inquiries">
+                            <div class="card-icon">
+                                <!-- Three users icon -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">INQUIRIES HANDLED</span>
+                                <div class="card-stat">24/7</div>
+                                <span class="card-sub">Every day. Every hour.</span>
+                            </div>
+                            <div class="card-chart">
+                                <!-- Minimal sparkline line chart SVG -->
+                                <svg viewBox="0 0 60 25" width="60" height="25" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M0 20 Q10 18, 15 12 T30 15 T45 5 T60 2" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Inquiries Automatically Answered -->
+                        <div class="ai-stat-card card-answered">
+                            <div class="card-icon">
+                                <!-- Lightning bolt icon -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">INQUIRIES AUTOMATICALLY ANSWERED</span>
+                                <div class="card-stat">-80%</div>
+                                <span class="card-sub">Workload Reduced</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Response Time -->
+                        <div class="ai-stat-card card-response">
+                            <div class="card-icon">
+                                <!-- Hourglass icon -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 2h14M5 22h14M19 2v4a7 7 0 0 1-14 0V2M5 22v-4a7 7 0 0 1 14 0v4" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">RESPONSE TIME</span>
+                                <div class="card-stat">Instant</div>
+                                <span class="card-sub">No more waiting</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Messaged Leads -->
+                        <div class="ai-stat-card card-leads">
+                            <div class="card-icon">
+                                <!-- Target bullseye icon -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <circle cx="12" cy="12" r="6" />
+                                    <circle cx="12" cy="12" r="2" />
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">MESSAGED LEADS</span>
+                                <div class="card-stat">Zero</div>
+                                <span class="card-sub">Left unattended</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal process bar (Row 2, full-width spans across grid columns) -->
+            <div class="hero-process-bar fade-up" style="animation-delay: 0.75s;">
+                <div class="process-item">
+                    <div class="process-icon">
+                        <!-- Chat Bubble SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <div class="process-text">
+                        <span class="process-label">ANSWERS INQUIRIES</span>
+                        <span class="process-desc">Instant, human-like conversations</span>
+                    </div>
+                </div>
+                <div class="process-separator">➔</div>
+                <div class="process-item">
+                    <div class="process-icon">
+                        <!-- Funnel SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                        </svg>
+                    </div>
+                    <div class="process-text">
+                        <span class="process-label">QUALIFIES LEADS</span>
+                        <span class="process-desc">Asks the right questions and captures details</span>
+                    </div>
+                </div>
+                <div class="process-separator">➔</div>
+                <div class="process-item">
+                    <div class="process-icon">
+                        <!-- Calendar SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                    </div>
+                    <div class="process-text">
+                        <span class="process-label">BOOKS APPOINTMENTS</span>
+                        <span class="process-desc">Adds to calendar and sends confirmations</span>
+                    </div>
+                </div>
+                <div class="process-separator">➔</div>
+                <div class="process-item">
+                    <div class="process-icon">
+                        <!-- Bell SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                    </div>
+                    <div class="process-text">
+                        <span class="process-label">SENDS REMINDERS</span>
+                        <span class="process-desc">Reduces no-shows with automatic reminders</span>
+                    </div>
+                </div>
+                <div class="process-separator">➔</div>
+                <div class="process-item">
+                    <div class="process-icon">
+                        <!-- Bar Chart SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg>
+                    </div>
+                    <div class="process-text">
+                        <span class="process-label">TRACKS & REPORTS</span>
+                        <span class="process-desc">Provides insights that help you grow</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trusted Client Logo Strip -->
+            <div class="hero-trusted-logos fade-up" style="animation-delay: 0.85s;">
+                <div class="trusted-label-container">
+                    <span class="trusted-line"></span>
+                    <span class="trusted-label-text">TRUSTED BY AMBITIOUS BUSINESSES</span>
+                    <span class="trusted-line"></span>
+                </div>
+                <div class="logos-container">
+                    <div class="logo-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                            <path d="M2 2l5 5"/>
+                            <path d="M14 11h7"/>
+                        </svg>
+                        <span class="logo-text">HUNGRYMANDESIGNS</span>
+                    </div>
+                    <div class="logo-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                        <span class="logo-text">YASH PRINTERS</span>
+                    </div>
+                    <div class="logo-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="logo-text">MOHIT ARMY STORE</span>
+                    </div>
+                    <div class="logo-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                        <span class="logo-text">MR SHOE</span>
+                    </div>
+                    <div class="logo-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span class="logo-text">HUNGRYTALKS</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -3094,7 +4412,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script>
-
+        
+        // Mouse Parallax for Hero Visuals
+        document.addEventListener("mousemove", (e) => {
+            const heroVisual = document.querySelector(".ai-hero-visual-wrapper");
+            if (!heroVisual) return;
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
+            
+            const chatWindow = document.querySelector(".ai-chat-window");
+            const cardsStack = document.querySelector(".ai-cards-stack");
+            
+            if (chatWindow && window.innerWidth > 1200) {
+                chatWindow.style.transform = `perspective(1200px) rotateY(${-12 + xAxis * 0.5}deg) rotateX(${6 + yAxis * 0.5}deg) translateZ(10px) translateY(${yAxis * 0.2}px) translateX(${xAxis * 0.2}px)`;
+            }
+            if (cardsStack && window.innerWidth > 1200) {
+                cardsStack.style.transform = `translateX(${xAxis * -0.3}px) translateY(${yAxis * -0.3}px)`;
+            }
+        });
 
         // Scroll Progress
         window.addEventListener('scroll', () => {

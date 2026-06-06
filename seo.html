@@ -163,7 +163,7 @@
         
         /* Navigation */
         #nav {
-            position: fixed; top: 0; width: 100%; z-index: 100; background: transparent; transition: var(--transition);
+            position: fixed; top: 0; width: 100%; z-index: 1000; background: transparent; transition: var(--transition);
         }
         #nav.scrolled {
             background: rgba(6,6,8,0.92); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border-default);
@@ -239,24 +239,26 @@
             pointer-events: none;
         }
         .hero-right-content {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 50%;
+            position: relative;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow: visible;
             pointer-events: auto;
             z-index: 2;
+            grid-column: 2;
+            grid-row: 1;
         }
         .hero-right-content::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(6, 6, 8, 1) 0%, rgba(6, 6, 8, 0.4) 30%, rgba(6, 6, 8, 0) 70%);
+            left: -40px;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            background: linear-gradient(to right, #060608 0%, transparent 100%);
             z-index: 3;
             pointer-events: none;
         }
@@ -278,17 +280,13 @@
                 position: relative;
                 width: 100%;
                 height: auto;
-                left: auto;
-                opacity: 1;
-                z-index: 10;
+                grid-column: 1;
+                grid-row: 2;
                 order: 2;
                 margin-top: 40px;
                 margin-bottom: 20px;
             }
             .hero-right-content::before {
-                display: none;
-            }
-            .hero-right-placeholder {
                 display: none;
             }
         }
@@ -305,21 +303,24 @@
             }
         }
         
-        .hero-grid-container { 
-            width: 100%; 
-            max-width: 1400px; 
-            margin: auto; 
-            padding: 120px 40px 40px; 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            position: relative; 
-            z-index: 10; 
+        .hero-grid-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            padding: 80px 40px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            align-items: center;
+            position: relative;
+            z-index: 10;
             pointer-events: none;
+            min-height: 100vh;
         }
         @media (max-width: 900px) {
             .hero-grid-container {
                 grid-template-columns: 1fr;
-                padding-top: 140px;
+                padding-top: 100px;
                 padding-bottom: 0;
                 text-align: center;
                 order: 1;
@@ -2227,399 +2228,532 @@
         .service-visual-container {
             position: relative;
             width: 100%;
-            height: 450px;
+            max-width: 500px;
+            height: 750px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            pointer-events: auto;
+            perspective: 1200px;
             z-index: 5;
         }
-        .visual-glow {
+
+        /* Top Search Input Mockup - Left Shifted */
+        .seo-search-input-mockup {
             position: absolute;
-            width: 350px;
-            height: 350px;
-            filter: blur(50px);
-            pointer-events: none;
-            z-index: 1;
+            top: 10px;
+            left: 1%;
+            width: 90%;
+            height: 46px;
+            background: rgba(15, 15, 18, 0.65);
+            border: 1px solid rgba(168, 85, 247, 0.22);
+            border-radius: 12px;
+            padding: 0 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 25px rgba(168, 85, 247, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 6;
+            will-change: transform;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
-        .seo-card {
-            background: rgba(15, 15, 18, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .seo-search-input-mockup:hover {
+            border-color: rgba(168, 85, 247, 0.45);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 30px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        }
+        .seo-search-input-mockup .search-text {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+        .seo-search-input-mockup .search-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* Google Search Mockup - Compact & Deep Glassmorphism */
+        .seo-browser-mockup {
+            position: absolute;
+            top: 70px;
+            left: 2%;
+            width: 96%;
+            height: 265px;
+            background: rgba(10, 10, 12, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            position: absolute;
-            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.04), inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 5;
+            will-change: transform;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
-        .seo-card:hover {
-            border-color: rgba(168, 85, 247, 0.3);
-            box-shadow: 0 25px 50px rgba(168, 85, 247, 0.1), inset 0 1px 0 rgba(255,255,255,0.05);
-            transform: translateY(-5px);
+        .seo-browser-mockup:hover {
+            border-color: rgba(168, 85, 247, 0.2);
         }
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-        }
-        .dot.red { background: #ef4444; }
-        .dot.yellow { background: #fbbf24; }
-        .dot.green { background: #10b981; }
-
-        /* Position cards */
-        .search-mockup {
-            width: 340px;
-            top: 30px;
-            left: 20px;
-            z-index: 3;
-        }
-        .chart-mockup {
-            width: 280px;
-            bottom: 30px;
-            right: 20px;
-            z-index: 4;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        @keyframes float-delayed {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(10px); }
-            100% { transform: translateY(0px); }
-        }
-        .anim-visual-1 {
-            animation: float 6s ease-in-out infinite;
-        }
-        .anim-visual-2 {
-            animation: float-delayed 6s ease-in-out infinite;
-        }
-
-        /* Specific inner styles */
-        .mockup-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-        }
-        .mockup-search-bar {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 11px;
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-        .search-results {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .result-item {
-            font-size: 11px;
-        }
-        .result-meta {
-            font-size: 9px;
-            font-weight: 600;
-            color: var(--primary-accent);
-            margin-bottom: 2px;
-        }
-        .result-title {
-            color: #38bdf8;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-        .result-snippet {
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-        .result-item.muted {
-            opacity: 0.4;
-        }
-        .result-item.muted .result-title {
-            color: white;
-        }
-
-        /* Chart Visual */
-        .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .chart-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        .chart-percentage {
-            font-size: 14px;
-            font-weight: 700;
-            color: #10b981;
-        }
-        .chart-bars {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            height: 120px;
-            padding-top: 10px;
-        }
-        .chart-bar-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 20%;
-            gap: 8px;
-        }
-        .chart-bar {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border-radius: 4px;
-            transition: height 1s ease;
-            height: 100%;
-        }
-        .chart-bar.active {
-            background: linear-gradient(to top, var(--primary-accent), #c084fc);
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-        }
-        .chart-month {
-            font-size: 9px;
-            color: var(--text-muted);
-        }
-
-        /* Paid Ads specific visuals */
-        .ad-mockup {
-            width: 320px;
-            top: 20px;
-            left: 10px;
-            z-index: 3;
-            padding: 15px;
-        }
-        .ad-user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-        .ad-avatar {
-            width: 32px;
+        .browser-header-row {
             height: 32px;
-            background: var(--primary-accent);
-            border-radius: 50%;
+            padding: 0 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.01);
         }
-        .ad-username {
-            font-size: 11px;
-            font-weight: 600;
-        }
-        .ad-sponsored {
-            font-size: 9px;
-            color: var(--text-muted);
-        }
-        .ad-image-placeholder {
-            height: 180px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
-            border-radius: 8px;
+        .browser-header-dots {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            position: relative;
-            overflow: hidden;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .ad-image-placeholder span {
-            position: absolute;
-            top: 45%;
-            width: 100%;
-            text-align: center;
-            color: rgba(255,255,255,0.4);
-        }
-        .ad-cta-bar {
-            background: rgba(15, 15, 18, 0.95);
-            padding: 10px 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .ad-cta-text {
-            font-size: 10px;
-            font-weight: 500;
-            color: white;
-        }
-        .ad-cta-btn {
-            background: var(--primary-accent);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 9px;
-            font-weight: 600;
-        }
-        .stats-mockup {
-            width: 290px;
-            bottom: 20px;
-            right: 10px;
-            z-index: 4;
-        }
-        .stats-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .stats-row:last-child {
-            margin-bottom: 0;
-        }
-        .stat-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 12px;
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .box-label {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .box-val {
-            font-size: 15px;
-            font-weight: 700;
-            font-family: var(--font-heading);
-        }
-
-        /* Web design specific visuals */
-        .browser-hero-visual {
-            height: 180px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(6,6,8,0.8));
-            border-radius: 8px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .b-glow {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 75%);
-            filter: blur(10px);
-        }
-        .b-text {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            color: white;
-            margin-bottom: 16px;
-            z-index: 2;
-        }
-        .b-grid {
-            display: flex;
-            gap: 10px;
-            width: 80%;
-            z-index: 2;
-        }
-        .b-block {
-            flex: 1;
-            height: 30px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 6px;
-        }
-        .flow-mockup {
-            width: 300px;
-            bottom: 20px;
-            right: 10px;
-            z-index: 4;
-        }
-        .flow-header {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--primary-accent);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .flow-steps {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             gap: 6px;
         }
-        .flow-step {
+        .browser-header-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            transition: background 0.3s;
+        }
+        .seo-browser-mockup:hover .browser-header-dots span:nth-child(1) { background: #ff5f56; }
+        .seo-browser-mockup:hover .browser-header-dots span:nth-child(2) { background: #ffbd2e; }
+        .seo-browser-mockup:hover .browser-header-dots span:nth-child(3) { background: #27c93f; }
+
+        .google-search-nav {
             display: flex;
             align-items: center;
+            gap: 14px;
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .google-logo {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            margin-right: 4px;
+        }
+        .google-tabs {
+            display: flex;
+            gap: 12px;
+        }
+        .google-tab {
+            font-size: 9.5px;
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 500;
+            position: relative;
+        }
+        .google-tab.active {
+            color: var(--primary-accent);
+        }
+        .google-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -11px;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+            background: var(--primary-accent);
+        }
+        .google-results-container {
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
             gap: 10px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 8px 12px;
-            width: 100%;
-            font-size: 11px;
+        }
+
+        /* Rank #1 Card (Primary Focal Point) - Styled with Inset Reflections */
+        .google-result-card-rank1 {
+            background: rgba(168, 85, 247, 0.02);
+            border: 1px solid rgba(168, 85, 247, 0.32);
+            border-radius: 12px;
+            padding: 10px 12px;
+            display: flex;
+            gap: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.02), inset 0 -1px 0 rgba(255, 255, 255, 0.01);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .google-result-card-rank1:hover {
+            border-color: rgba(168, 85, 247, 0.52);
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+        .google-rank-number {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: rgba(168, 85, 247, 0.65);
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+        }
+        .google-result-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+        }
+        .google-result-meta {
+            font-size: 8px;
+            font-weight: 600;
+            color: var(--primary-accent);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .google-result-title {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.25;
+        }
+        .google-result-url {
+            font-size: 9.5px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        .google-result-snippet {
+            font-size: 10.5px;
             color: var(--text-secondary);
+            line-height: 1.35;
+            margin-top: 1px;
         }
-        .flow-step.active {
-            border-color: var(--primary-accent);
-            background: rgba(168, 85, 247, 0.05);
-            color: white;
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.15);
+        .google-result-stars {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 9px;
+            color: #fbbf24;
+            margin-top: 1px;
         }
-        .flow-icon {
-            font-size: 14px;
-        }
-        .flow-arrow {
-            font-size: 10px;
+        .google-result-stars span.review-count {
             color: var(--text-muted);
+            margin-left: 2px;
+            font-size: 8.5px;
         }
+
+        /* Competitor Result Placeholders - Muted to prevent distraction */
+        .google-result-placeholder {
+            display: flex;
+            gap: 14px;
+            opacity: 0.16;
+            padding: 0 4px;
+        }
+        .google-placeholder-rank {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.35);
+            min-width: 20px;
+            text-align: center;
+        }
+        .google-placeholder-lines {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            justify-content: center;
+        }
+        .google-placeholder-line {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+        }
+        .google-placeholder-line.short { width: 45%; }
+        .google-placeholder-line.medium { width: 70%; }
+        .google-placeholder-line.long { width: 90%; }
+
+        /* SVG Flow Connections - Thicker Stroke & High Contrast */
+        .svg-energy-flows {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .energy-path {
+            fill: none;
+            stroke-linecap: round;
+            opacity: 0.45;
+        }
+        .energy-particle {
+            offset-rotate: 0deg;
+            will-change: transform, opacity;
+        }
+        .particle-flow-1 {
+            offset-path: path("M 250 220 C 250 300, 60 300, 60 385");
+            animation: flowParticle 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        .particle-flow-2 {
+            offset-path: path("M 250 220 C 250 300, 185 300, 185 385");
+            animation: flowParticle 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 1.25s;
+        }
+        .particle-flow-3 {
+            offset-path: path("M 250 220 C 250 300, 315 300, 315 385");
+            animation: flowParticle 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 2.5s;
+        }
+        .particle-flow-4 {
+            offset-path: path("M 250 220 C 250 300, 440 300, 440 385");
+            animation: flowParticle 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 3.75s;
+        }
+        .particle-portal-1 {
+            offset-path: path("M 60 485 C 60 565, 250 565, 250 645");
+            animation: flowParticle 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 0.6s;
+        }
+        .particle-portal-2 {
+            offset-path: path("M 185 485 C 185 565, 250 565, 250 645");
+            animation: flowParticle 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 1.85s;
+        }
+        .particle-portal-3 {
+            offset-path: path("M 315 485 C 315 565, 250 565, 250 645");
+            animation: flowParticle 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 3.1s;
+        }
+        .particle-portal-4 {
+            offset-path: path("M 440 485 C 440 565, 250 565, 250 645");
+            animation: flowParticle 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 4.35s;
+        }
+        @keyframes flowParticle {
+            0% { offset-distance: 0%; opacity: 0; }
+            15% { opacity: 0.85; }
+            85% { opacity: 0.85; }
+            100% { offset-distance: 100%; opacity: 0; }
+        }
+
+        /* Analytics Row of Cards - Position Shifted for 50px Breathing Room */
+        .analytics-row {
+            position: absolute;
+            top: 385px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            z-index: 5;
+            will-change: transform;
+        }
+        .metric-card {
+            flex: 1;
+            background: rgba(10, 10, 12, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 8px 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .metric-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+        .metric-card .card-title {
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .metric-card .card-value {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 3px 0 1px;
+            line-height: 1;
+        }
+        .metric-card .card-change {
+            font-size: 8.5px;
+            font-weight: 600;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            line-height: 1;
+        }
+        .metric-card .sparkline-container {
+            height: 20px;
+            width: 100%;
+            margin-top: 3px;
+        }
+        .sparkline-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 3D Growth Portal - 20% Larger base & Subtle glow */
+        .portal-container {
+            position: absolute;
+            top: 455px;
+            left: 0;
+            right: 0;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+        .portal-3d-base {
+            position: absolute;
+            width: 264px;
+            height: 264px;
+            transform: rotateX(68deg);
+            transform-style: preserve-3d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portal-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(168, 85, 247, 0.22);
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.04) 0%, transparent 80%);
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.12), inset 0 0 25px rgba(168, 85, 247, 0.06);
+            animation: rotateRing 20s linear infinite;
+        }
+        .portal-ring.ring-outer {
+            width: 288px;
+            height: 288px;
+            border-style: dashed;
+            animation-duration: 40s;
+        }
+        .portal-ring.ring-mid {
+            width: 216px;
+            height: 216px;
+            border-color: rgba(168, 85, 247, 0.35);
+            animation-duration: 25s;
+            animation-direction: reverse;
+        }
+        .portal-ring.ring-inner {
+            width: 132px;
+            height: 132px;
+            border-color: rgba(168, 85, 247, 0.5);
+            animation-duration: 15s;
+        }
+        @keyframes rotateRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .portal-center-label {
+            position: absolute;
+            top: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 10.5px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-align: center;
+            white-space: nowrap;
+            text-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            z-index: 5;
+        }
+
+        /* Floating Client Avatars - Position Adjustments */
+        .floating-avatar {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(15, 15, 18, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 6;
+            animation: floatAvatar 6s ease-in-out infinite;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .floating-avatar:hover {
+            border-color: rgba(168, 85, 247, 0.75);
+            transform: scale(1.1) translateY(-2px);
+        }
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        .avatar-1 { top: 60px; left: 40px; animation-delay: 0s; }
+        .avatar-2 { top: 135px; left: 95px; animation-delay: 1.5s; }
+        .avatar-3 { top: 70px; right: 50px; animation-delay: 0.8s; }
+        .avatar-4 { top: 145px; right: 105px; animation-delay: 2.3s; }
+
+        /* Mobile Responsive Overrides */
         @media (max-width: 900px) {
             .service-visual-container {
-                height: 380px;
-            }
-            .search-mockup, .ad-mockup, .browser-mockup {
-                width: 280px;
-                left: 5%;
-                top: 20px;
-            }
-            .chart-mockup, .stats-mockup, .flow-mockup {
-                width: 250px;
-                right: 5%;
-                bottom: 20px;
+                height: 750px;
+                max-width: 460px;
+                margin: 0 auto;
             }
         }
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
             .service-visual-container {
-                height: 300px;
+                height: auto;
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 16px 10px;
             }
-            .search-mockup, .ad-mockup, .browser-mockup {
-                width: 220px;
-                left: 2%;
-                top: 10px;
+            .seo-search-input-mockup, 
+            .seo-browser-mockup, 
+            .analytics-row, 
+            .portal-container {
+                position: relative;
+                top: auto;
+                left: auto;
+                right: auto;
+                width: 100%;
+                max-width: 100%;
             }
-            .chart-mockup, .stats-mockup, .flow-mockup {
-                width: 200px;
-                right: 2%;
-                bottom: 10px;
+            .seo-browser-mockup {
+                height: auto;
+                min-height: 265px;
+            }
+            .analytics-row {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                height: auto;
+            }
+            .metric-card {
+                height: 85px;
+            }
+            .portal-container {
+                height: 180px;
+                margin-top: 10px;
+            }
+            .portal-center-label {
+                top: 125px;
+            }
+            .svg-energy-flows,
+            .floating-avatar {
+                display: none;
             }
         }
+
     </style>
 
 </head>
@@ -2662,49 +2796,6 @@
             <div class="hero-vignette"></div>
         </div>
 
-        <!-- Right Side Visual Representation -->
-        <div class="hero-right-content fade-up" style="animation-delay: 0.4s;">
-            
-<div class="service-visual-container">
-    <div class="visual-glow" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);"></div>
-    
-    <div class="seo-card search-mockup anim-visual-1">
-        <div class="mockup-header">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        </div>
-        <div class="mockup-search-bar">
-            <span class="search-text">best business in ludhiana</span>
-            <span class="search-icon">🔍</span>
-        </div>
-        <div class="search-results">
-            <div class="result-item">
-                <div class="result-meta">🥇 RARE DIGITAL (Rank #1)</div>
-                <div class="result-title">Ludhiana's Top AI Marketing & SEO Agency</div>
-                <div class="result-snippet">https://raredigital.in · We help businesses scale with advanced local SEO, paid ads...</div>
-            </div>
-            <div class="result-item muted">
-                <div class="result-title">Competitor Agency</div>
-                <div class="result-snippet">https://competitor.com · General marketing services...</div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="seo-card chart-mockup anim-visual-2">
-        <div class="chart-header">
-            <span class="chart-title">Organic Traffic Growth</span>
-            <span class="chart-percentage">+340%</span>
-        </div>
-        <div class="chart-bars">
-            <div class="chart-bar-container"><div class="chart-bar" style="height: 25px;"></div><span class="chart-month">M1</span></div>
-            <div class="chart-bar-container"><div class="chart-bar" style="height: 55px;"></div><span class="chart-month">M2</span></div>
-            <div class="chart-bar-container"><div class="chart-bar" style="height: 90px;"></div><span class="chart-month">M3</span></div>
-            <div class="chart-bar-container"><div class="chart-bar active" style="height: 120px;"></div><span class="chart-month">Now</span></div>
-        </div>
-    </div>
-</div>
-
-        </div>
-
         <div class="hero-grid-container">
             <!-- Left Side Content -->
             <div class="hero-left-content">
@@ -2727,8 +2818,258 @@
                     </a>
                 </div>
             </div>
-            <!-- Right Side Spacer -->
-            <div class="hero-right-placeholder"></div>
+            <!-- Right Side Visual Representation -->
+            <div class="hero-right-content fade-up" style="animation-delay: 0.4s;">
+                <div class="service-visual-container">
+                    <!-- Inline SVG for flows and particles -->
+                    <svg class="svg-energy-flows" viewBox="0 0 500 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Flow Path Gradients -->
+                            <linearGradient id="energyPathGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="rgba(168, 85, 247, 0.35)"/>
+                                <stop offset="50%" stop-color="rgba(99, 102, 241, 0.25)"/>
+                                <stop offset="100%" stop-color="rgba(168, 85, 247, 0.35)"/>
+                            </linearGradient>
+                            <!-- Particle Glow Filters -->
+                            <filter id="particleGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- Static connection lines for floating avatars to the portal center (250, 645) -->
+                        <line x1="54" y1="614" x2="250" y2="645" stroke="rgba(168, 85, 247, 0.15)" stroke-width="1" stroke-dasharray="2 3" />
+                        <line x1="109" y1="694" x2="250" y2="645" stroke="rgba(168, 85, 247, 0.15)" stroke-width="1" stroke-dasharray="2 3" />
+                        <line x1="436" y1="624" x2="250" y2="645" stroke="rgba(168, 85, 247, 0.15)" stroke-width="1" stroke-dasharray="2 3" />
+                        <line x1="381" y1="704" x2="250" y2="645" stroke="rgba(168, 85, 247, 0.15)" stroke-width="1" stroke-dasharray="2 3" />
+
+                        <!-- 4 Energy Paths: Rank #1 Card center (250, 220) to each of the 4 analytics cards (top centers at y=385) -->
+                        <path class="energy-path" d="M 250 220 C 250 300, 60 300, 60 385" stroke="url(#energyPathGrad)" stroke-width="2.0" />
+                        <path class="energy-path" d="M 250 220 C 250 300, 185 300, 185 385" stroke="url(#energyPathGrad)" stroke-width="2.0" />
+                        <path class="energy-path" d="M 250 220 C 250 300, 315 300, 315 385" stroke="url(#energyPathGrad)" stroke-width="2.0" />
+                        <path class="energy-path" d="M 250 220 C 250 300, 440 300, 440 385" stroke="url(#energyPathGrad)" stroke-width="2.0" />
+
+                        <!-- 4 Return Paths: Analytics cards (bottom centers at y=485) to Portal center (250, 645) -->
+                        <path class="energy-path" d="M 60 485 C 60 565, 250 565, 250 645" stroke="url(#energyPathGrad)" stroke-width="2.0" />
+                        <path class="energy-path" d="M 185 485 C 185 565, 250 565, 250 645" stroke="url(#energyPathGrad)" stroke-width="2.0" />
+                        <path class="energy-path" d="M 315 485 C 315 565, 250 565, 250 645" stroke="url(#energyPathGrad)" stroke-width="2.0" />
+                        <path class="energy-path" d="M 440 485 C 440 565, 250 565, 250 645" stroke="url(#energyPathGrad)" stroke-width="2.0" />
+
+                        <!-- Animated Glowing Particles (throttled with CSS offset animations) -->
+                        <!-- Flow Down Particles -->
+                        <circle class="energy-particle particle-flow-1" r="3.2" fill="#d8b4fe" filter="url(#particleGlow)" />
+                        <circle class="energy-particle particle-flow-2" r="3.2" fill="#d8b4fe" filter="url(#particleGlow)" />
+                        <circle class="energy-particle particle-flow-3" r="3.2" fill="#d8b4fe" filter="url(#particleGlow)" />
+                        <circle class="energy-particle particle-flow-4" r="3.2" fill="#d8b4fe" filter="url(#particleGlow)" />
+                        <!-- Flow to Portal Particles -->
+                        <circle class="energy-particle particle-portal-1" r="3.2" fill="#d8b4fe" filter="url(#particleGlow)" />
+                        <circle class="energy-particle particle-portal-2" r="3.2" fill="#d8b4fe" filter="url(#particleGlow)" />
+                        <circle class="energy-particle particle-portal-3" r="3.2" fill="#d8b4fe" filter="url(#particleGlow)" />
+                        <circle class="energy-particle particle-portal-4" r="3.2" fill="#d8b4fe" filter="url(#particleGlow)" />
+                    </svg>
+
+                    <!-- Top Search Input Mockup -->
+                    <div class="seo-search-input-mockup">
+                        <span class="search-text">best marketing agency ludhiana</span>
+                        <div class="search-icons">
+                            <!-- Microphone Icon SVG -->
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+                                <line x1="12" y1="19" x2="12" y2="23"/>
+                                <line x1="8" y1="23" x2="16" y2="23"/>
+                            </svg>
+                            <!-- Search Icon SVG -->
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px;">
+                                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Google Browser Panel Mockup -->
+                    <div class="seo-browser-mockup">
+                        <div class="browser-header-row">
+                            <div class="browser-header-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="google-search-nav">
+                            <span class="google-logo">Google</span>
+                            <div class="google-tabs">
+                                <span class="google-tab active">All</span>
+                                <span class="google-tab">Images</span>
+                                <span class="google-tab">News</span>
+                                <span class="google-tab">Videos</span>
+                                <span class="google-tab">Shopping</span>
+                                <span class="google-tab">More</span>
+                            </div>
+                        </div>
+                        <div class="google-results-container">
+                            <!-- Rank 1 Card -->
+                            <div class="google-result-card-rank1">
+                                <div class="google-rank-number">1</div>
+                                <div class="google-result-info">
+                                    <div class="google-result-meta">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="color:var(--primary-accent); margin-top:-1px;">
+                                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                        </svg>
+                                        RARE DIGITAL (Rank #1)
+                                    </div>
+                                    <div class="google-result-title">Ludhiana's Top Marketing & SEO Agency</div>
+                                    <div class="google-result-url">https://raredigital.in</div>
+                                    <div class="google-result-snippet">We help businesses scale with advanced local SEO, paid ads & performance marketing.</div>
+                                    <div class="google-result-stars">
+                                        ★★★★★ <span class="review-count">4.9 (120+ reviews)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Rank 2 Competitor Result Placeholder -->
+                            <div class="google-result-placeholder">
+                                <div class="google-placeholder-rank">2</div>
+                                <div class="google-placeholder-lines">
+                                    <div class="google-placeholder-line medium"></div>
+                                    <div class="google-placeholder-line long"></div>
+                                </div>
+                            </div>
+
+                            <!-- Rank 3 Competitor Result Placeholder -->
+                            <div class="google-result-placeholder">
+                                <div class="google-placeholder-rank">3</div>
+                                <div class="google-placeholder-lines">
+                                    <div class="google-placeholder-line short"></div>
+                                    <div class="google-placeholder-line long"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Row of 4 Metric Cards -->
+                    <div class="analytics-row">
+                        <!-- Card 1 -->
+                        <div class="metric-card">
+                            <div class="card-title">Organic Traffic</div>
+                            <div class="card-value">12,458</div>
+                            <div class="card-change">▲ 340%</div>
+                            <div class="sparkline-container">
+                                <svg class="sparkline-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="sparkGrad1" x1="0" y1="1" x2="0" y2="0">
+                                            <stop offset="0%" stop-color="rgba(168, 85, 247, 0)"/>
+                                            <stop offset="100%" stop-color="rgba(168, 85, 247, 0.15)"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M 0 25 Q 25 20, 50 15 T 100 5 L 100 30 L 0 30 Z" fill="url(#sparkGrad1)" />
+                                    <path d="M 0 25 Q 25 20, 50 15 T 100 5" fill="none" stroke="var(--primary-accent)" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="metric-card">
+                            <div class="card-title">Leads Generated</div>
+                            <div class="card-value">3,286</div>
+                            <div class="card-change">▲ 240%</div>
+                            <div class="sparkline-container">
+                                <svg class="sparkline-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                    <path d="M 0 28 Q 20 22, 40 18 T 80 8 T 100 3 L 100 30 L 0 30 Z" fill="url(#sparkGrad1)" />
+                                    <path d="M 0 28 Q 20 22, 40 18 T 80 8 T 100 3" fill="none" stroke="var(--primary-accent)" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="metric-card">
+                            <div class="card-title">Conversion Rate</div>
+                            <div class="card-value">8.7%</div>
+                            <div class="card-change">▲ 3.2%</div>
+                            <div class="sparkline-container">
+                                <svg class="sparkline-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                    <path d="M 0 26 Q 30 20, 60 22 T 100 6 L 100 30 L 0 30 Z" fill="url(#sparkGrad1)" />
+                                    <path d="M 0 26 Q 30 20, 60 22 T 100 6" fill="none" stroke="var(--primary-accent)" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="metric-card">
+                            <div class="card-title">Revenue Generated</div>
+                            <div class="card-value">₹2.48M</div>
+                            <div class="card-change">▲ 320%</div>
+                            <div class="sparkline-container">
+                                <svg class="sparkline-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                    <path d="M 0 28 Q 25 25, 50 12 T 100 4 L 100 30 L 0 30 Z" fill="url(#sparkGrad1)" />
+                                    <path d="M 0 28 Q 25 25, 50 12 T 100 4" fill="none" stroke="var(--primary-accent)" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Growth Portal Base & Floating Avatars -->
+                    <div class="portal-container">
+                        <!-- Concentric rings with 3D projection -->
+                        <div class="portal-3d-base">
+                            <div class="portal-ring ring-outer"></div>
+                            <div class="portal-ring ring-mid"></div>
+                            <div class="portal-ring ring-inner"></div>
+                        </div>
+                        <div class="portal-center-label">Real Results. Real Growth.</div>
+
+                        <!-- Floating Avatar 1 (Left top) -->
+                        <div class="floating-avatar avatar-1" title="Client Success">
+                            <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="userGrad1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#3b82f6"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="16" cy="16" r="16" fill="url(#userGrad1)"/>
+                                <circle cx="16" cy="12" r="4.5" fill="#ffffff" fill-opacity="0.9"/>
+                                <path d="M7.5 24.5 C7.5 19.5, 24.5 19.5, 24.5 24.5" fill="#ffffff" fill-opacity="0.9"/>
+                            </svg>
+                        </div>
+                        <!-- Floating Avatar 2 (Left bottom) -->
+                        <div class="floating-avatar avatar-2" title="Client Success">
+                            <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="userGrad2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#ec4899"/><stop offset="1" stop-color="#8b5cf6"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="16" cy="16" r="16" fill="url(#userGrad2)"/>
+                                <circle cx="16" cy="12" r="4.5" fill="#ffffff" fill-opacity="0.9"/>
+                                <path d="M7.5 24.5 C7.5 19.5, 24.5 19.5, 24.5 24.5" fill="#ffffff" fill-opacity="0.9"/>
+                            </svg>
+                        </div>
+                        <!-- Floating Avatar 3 (Right top) -->
+                        <div class="floating-avatar avatar-3" title="Client Success">
+                            <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="userGrad3" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#10b981"/><stop offset="1" stop-color="#3b82f6"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="16" cy="16" r="16" fill="url(#userGrad3)"/>
+                                <circle cx="16" cy="12" r="4.5" fill="#ffffff" fill-opacity="0.9"/>
+                                <path d="M7.5 24.5 C7.5 19.5, 24.5 19.5, 24.5 24.5" fill="#ffffff" fill-opacity="0.9"/>
+                            </svg>
+                        </div>
+                        <!-- Floating Avatar 4 (Right bottom) -->
+                        <div class="floating-avatar avatar-4" title="Client Success">
+                            <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="userGrad4" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#f59e0b"/><stop offset="1" stop-color="#ec4899"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="16" cy="16" r="16" fill="url(#userGrad4)"/>
+                                <circle cx="16" cy="12" r="4.5" fill="#ffffff" fill-opacity="0.9"/>
+                                <path d="M7.5 24.5 C7.5 19.5, 24.5 19.5, 24.5 24.5" fill="#ffffff" fill-opacity="0.9"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -3682,6 +4023,52 @@
                 msg.style.display = 'none';
             }, 3000);
         }
+
+        // Throttled Parallax for right-side Hero elements (Desktop Only)
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector('.service-visual-container');
+            const browser = document.querySelector('.seo-browser-mockup');
+            const cards = document.querySelector('.analytics-row');
+            const search = document.querySelector('.seo-search-input-mockup');
+            
+            if (!container || !browser || window.innerWidth < 900) return;
+            
+            let mouseX = 0, mouseY = 0;
+            let targetX = 0, targetY = 0;
+            let tick = false;
+            
+            window.addEventListener('mousemove', (e) => {
+                targetX = (e.clientX / window.innerWidth) - 0.5;
+                targetY = (e.clientY / window.innerHeight) - 0.5;
+                
+                if (!tick) {
+                    requestAnimationFrame(updateParallax);
+                    tick = true;
+                }
+            });
+            
+            function updateParallax() {
+                // Smooth interpolation (lerp)
+                mouseX += (targetX - mouseX) * 0.08;
+                mouseY += (targetY - mouseY) * 0.08;
+                
+                // Muted values for high-end luxury feel (subtlety over spectacle)
+                const rotateX = -mouseY * 8; // Max 4 degrees
+                const rotateY = mouseX * 8;  // Max 4 degrees
+                
+                if (browser) {
+                    browser.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }
+                if (cards) {
+                    cards.style.transform = `rotateX(${rotateX * 0.75}deg) rotateY(${rotateY * 0.75}deg) translateZ(20px)`;
+                }
+                if (search) {
+                    search.style.transform = `rotateX(${rotateX * 0.5}deg) rotateY(${rotateY * 0.5}deg) translateZ(5px)`;
+                }
+                
+                tick = false;
+            }
+        });
     </script>
     
 </body>

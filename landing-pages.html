@@ -108,6 +108,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/favicon_rare.svg">
     <link rel="icon" type="image/png" href="/favicon_rare.png">
     <link rel="apple-touch-icon" href="/favicon_rare.png">
@@ -216,14 +217,14 @@
             .hamburger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
             .nav-container { padding: 18px 20px; }
         }
-        
-        /* Hero Section */
+          /* Hero Section Redesign */
         #hero { 
             min-height: 100vh; 
             position: relative; 
             overflow: hidden; 
             display: flex; 
-            align-items: center; 
+            align-items: center;
+            background-color: #000000;
         }
         .hero-bg { position: absolute; inset: 0; z-index: 1; }
         .hero-glow {
@@ -237,60 +238,6 @@
             z-index: 1;
             filter: blur(80px);
             pointer-events: none;
-        }
-        .hero-right-content {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 50%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            pointer-events: auto;
-            z-index: 2;
-        }
-        .hero-right-content::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(6, 6, 8, 1) 0%, rgba(6, 6, 8, 0.4) 30%, rgba(6, 6, 8, 0) 70%);
-            z-index: 3;
-            pointer-events: none;
-        }
-        .hero-crystal-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 0;
-            border: none;
-        }
-        @media (max-width: 900px) {
-            #hero {
-                flex-direction: column;
-                height: auto;
-                min-height: auto;
-                padding-bottom: 60px;
-            }
-            .hero-right-content {
-                position: relative;
-                width: 100%;
-                height: auto;
-                left: auto;
-                opacity: 1;
-                z-index: 10;
-                order: 2;
-                margin-top: 40px;
-                margin-bottom: 20px;
-            }
-            .hero-right-content::before {
-                display: none;
-            }
-            .hero-right-placeholder {
-                display: none;
-            }
         }
         .hero-vignette { 
             position: absolute; 
@@ -311,18 +258,21 @@
             margin: auto; 
             padding: 120px 40px 40px; 
             display: grid; 
-            grid-template-columns: 1fr 1fr; 
+            grid-template-columns: 45% 55%; 
+            align-items: center;
             position: relative; 
             z-index: 10; 
             pointer-events: none;
+            min-height: 100vh;
+            gap: 40px;
         }
         @media (max-width: 900px) {
             .hero-grid-container {
                 grid-template-columns: 1fr;
                 padding-top: 140px;
-                padding-bottom: 0;
+                padding-bottom: 60px;
                 text-align: center;
-                order: 1;
+                gap: 60px;
             }
         }
         
@@ -345,7 +295,7 @@
             border-radius: var(--radius-pills); 
             border: 1px solid rgba(168, 85, 247, 0.3); 
             background: rgba(168, 85, 247, 0.06); 
-            margin-bottom: 32px; 
+            margin-bottom: 28px; 
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.08);
         }
         .badge-text { 
@@ -357,12 +307,12 @@
         }
         
         .hero-h1 { 
-            font-family: var(--font-serif); 
-            font-size: clamp(44px, 5.5vw, 76px); 
-            font-weight: 400; 
-            line-height: 1.05; 
+            font-family: var(--font-heading); 
+            font-size: clamp(38px, 4.8vw, 68px); 
+            font-weight: 700; 
+            line-height: 1.1; 
             letter-spacing: -0.02em; 
-            margin-bottom: 28px; 
+            margin-bottom: 24px; 
             color: #ffffff;
             text-align: left;
         }
@@ -370,39 +320,64 @@
             .hero-h1 { text-align: center; }
         }
         .hero-h1 span.gradient { 
-            background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 40%, #a855f7 70%, #6366f1 100%); 
+            background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 40%, #a855f7 70%, #f472b6 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
         
         .hero-sub { 
-            font-size: clamp(15px, 1.4vw, 17px); 
+            font-size: clamp(15px, 1.3vw, 17px); 
             color: var(--text-secondary); 
             line-height: 1.7; 
             max-width: 540px; 
-            margin-bottom: 16px; 
+            margin-bottom: 32px; 
             font-weight: 300; 
             text-align: left;
         }
         @media (max-width: 900px) {
             .hero-sub { margin-left: auto; margin-right: auto; text-align: center; }
         }
-        .hero-micro {
-            font-size: clamp(12px, 1.1vw, 13px);
-            color: var(--text-muted);
-            margin-bottom: 36px;
-            text-align: left;
-            font-weight: 400;
+
+        /* Feature Chips Styling */
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+            width: 100%;
         }
         @media (max-width: 900px) {
-            .hero-micro { text-align: center; }
+            .hero-chips {
+                justify-content: center;
+            }
+        }
+        .hero-chip {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-pills);
+            padding: 8px 18px;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        .hero-chip:hover {
+            border-color: rgba(168, 85, 247, 0.3);
+            background: rgba(168, 85, 247, 0.05);
+            transform: translateY(-1px);
         }
         
         .hero-btns { 
             display: flex; 
             gap: 16px; 
             align-items: center; 
-            margin-bottom: 64px; 
+            margin-bottom: 44px; 
             flex-wrap: wrap;
         }
         @media (max-width: 900px) {
@@ -456,53 +431,290 @@
             color: white;
             transform: translateY(-2px);
         }
-        .btn-play { 
-            font-size: 10px; 
-            width: 20px; 
-            height: 20px; 
-            border: 1px solid rgba(255,255,255,0.4); 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding-left: 2px;
+
+        /* Upgraded Trust Section Styling */
+        .hero-trust {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+        @media (max-width: 900px) {
+            .hero-trust {
+                align-items: center;
+                text-align: center;
+            }
+        }
+        .trust-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .avatar-list {
+            display: flex;
+            align-items: center;
+        }
+        .avatar-list img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #000000;
+            margin-right: -8px;
+            background: #222;
+        }
+        .trust-stars {
+            color: #fbbf24;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+        .trust-rating {
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.05em;
+        }
+        .trust-subtext {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Right Side Showcase Parallax & Depth Styles */
+        .hero-right-content {
+            position: relative;
+            width: 100%;
+            height: 520px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+            pointer-events: auto;
+            z-index: 2;
+        }
+        @media (max-width: 900px) {
+            .hero-right-content {
+                height: 480px;
+                margin-top: 20px;
+            }
+        }
+        .parallax-container {
+            perspective: 1500px;
+            transform-style: preserve-3d;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #parallax-scene {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease-out;
+        }
+        .parallax-layer {
+            position: absolute;
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition: transform 0.2s ease-out;
+        }
+
+        /* 3D Browser Mockup Centerpiece */
+        .browser-mockup-3d {
+            width: 440px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #111115;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(168, 85, 247, 0.15);
+            transform: rotateX(12deg) rotateY(-18deg) rotateZ(3deg);
+            z-index: 20;
+        }
+        @media (max-width: 500px) {
+            .browser-mockup-3d {
+                width: 300px;
+            }
+        }
+        .browser-bar-top {
+            height: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 6px;
+        }
+        .browser-circle {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .browser-circle.c-red { background: #ef4444; }
+        .browser-circle.c-yellow { background: #f59e0b; }
+        .browser-circle.c-green { background: #10b981; }
+        
+        .browser-url-bar {
+            width: 160px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+            margin: 0 auto;
+        }
+        .browser-content-area {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+        }
+        .browser-content-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .browser-overlay-grad {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(6, 6, 8, 0.9) 0%, rgba(6, 6, 8, 0.2) 50%, transparent 100%);
+            pointer-events: none;
+        }
+        .browser-caption {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            text-align: left;
+        }
+        .browser-caption .tag {
+            font-size: 8px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--primary-accent);
+        }
+        .browser-caption .title {
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            margin-top: 2px;
+            font-family: var(--font-heading);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(19, 19, 20, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(208, 188, 255, 0.15);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.05);
+            padding: 16px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            pointer-events: auto;
+        }
+        .glass-card:hover {
+            border-color: rgba(208, 188, 255, 0.4);
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.18);
+        }
+        .glass-card .icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .glass-card .icon-box.col-primary {
+            background: rgba(208, 188, 255, 0.15);
+            color: #d0bcff;
+        }
+        .glass-card .icon-box.col-secondary {
+            background: rgba(255, 176, 205, 0.15);
+            color: #ffb0cd;
+        }
+        .glass-card .icon-box.col-tertiary {
+            background: rgba(76, 215, 246, 0.15);
+            color: #4cd7f6;
+        }
+        .glass-card .card-info {
+            text-align: left;
+        }
+        .glass-card .card-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 2px;
+        }
+        .glass-card .card-desc {
+            font-size: 9.5px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        /* Glass Floating Shapes */
+        .glass-shape {
+            position: absolute;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 80%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
-        /* Trusted By Logos */
-        .hero-trusted { 
-            width: 100%; 
-            border-top: 1px solid rgba(255,255,255,0.06); 
-            padding-top: 32px; 
-            text-align: left; 
+        /* Particle Background Drift */
+        .particle {
+            position: absolute;
+            background: #d0bcff;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.2;
         }
-        @media (max-width: 900px) {
-            .hero-trusted { text-align: center; }
+        @keyframes drift {
+            from { transform: translateY(0) rotate(0deg); }
+            to { transform: translateY(-100vh) rotate(360deg); }
         }
-        .trusted-title { 
-            font-size: 10px; 
-            letter-spacing: 0.15em; 
-            color: rgba(255,255,255,0.35); 
-            margin-bottom: 20px; 
-            text-transform: uppercase; 
-            font-weight: 600;
+
+        /* Floating animations */
+        @keyframes float-hero {
+            0%, 100% { transform: rotateX(12deg) rotateY(-18deg) rotateZ(3deg) translateY(0); }
+            50% { transform: rotateX(12deg) rotateY(-18deg) rotateZ(3deg) translateY(-14px); }
         }
-        .trusted-logos { 
-            display: flex; 
-            gap: 28px; 
-            align-items: center; 
-            flex-wrap: wrap; 
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
         }
-        @media (max-width: 900px) {
-            .trusted-logos { justify-content: center; }
+        @keyframes float-medium {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-22px) rotate(-1deg); }
         }
-        .trusted-logo { 
-            font-family: var(--font-heading); 
-            font-size: 13px; 
-            font-weight: 700; 
-            letter-spacing: 0.1em; 
-            color: rgba(255,255,255,0.4); 
+        @keyframes float-fast {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1.5deg); }
         }
-        .trusted-logo .logo-light { font-weight: 300; opacity: 0.7; }
+        @keyframes float-rotate {
+            0% { transform: rotate(0deg) translateY(0); }
+            50% { transform: rotate(180deg) translateY(-8px); }
+            100% { transform: rotate(360deg) translateY(0); }
+        }
+
+        .animate-float-hero { animation: float-hero 9s ease-in-out infinite; }
+        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+        .animate-float-medium { animation: float-medium 6.5s ease-in-out infinite; }
+        .animate-float-fast { animation: float-fast 5s ease-in-out infinite; }
+        .animate-rotate-slow { animation: float-rotate 15s linear infinite; }
         
         /* Scroll Down (Bottom Right) */
         .scroll-down-wrapper { 
@@ -520,7 +732,7 @@
         }
         .scroll-down-wrapper .scroll-text { 
             font-size: 10px; 
-            color: rgba(255,255,255,0.35); 
+            color: rgba(255, 255, 255, 0.35); 
             letter-spacing: 0.15em; 
             font-weight: 600; 
         }
@@ -2662,82 +2874,152 @@
             <div class="hero-vignette"></div>
         </div>
 
-        <!-- Right Side Visual Representation -->
-        <div class="hero-right-content fade-up" style="animation-delay: 0.4s;">
-            
-<div class="service-visual-container">
-    <div class="visual-glow" style="background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);"></div>
-    
-    <div class="seo-card ad-mockup anim-visual-1">
-        <div class="mockup-header">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        </div>
-        <div class="ad-user">
-            <div class="ad-avatar" style="font-size: 14px;">★</div>
-            <div>
-                <div class="ad-username">★★★★★</div>
-                <div class="ad-sponsored">— eCommerce Brand Owner, Ludhiana</div>
-            </div>
-        </div>
-        <div class="ad-image-placeholder">
-            <span>"Our bounce rate dropped by 40% and conversions tripled with the 3D page."</span>
-            <div class="ad-cta-bar">
-                <span class="ad-cta-text" style="font-size: 10px;">[Sub-2s Load] [3x Conversions] [Mobile Perfect]</span>
-                <span class="ad-cta-btn" style="font-size: 9px; padding: 4px 8px;">Active</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="seo-card stats-mockup anim-visual-2">
-        <div class="stats-row">
-            <div class="stat-box">
-                <span class="box-label">Average Load Time</span>
-                <span class="box-val" style="color: #a855f7;">&lt; 2s</span>
-            </div>
-            <div class="stat-box">
-                <span class="box-label">Higher Conversion Rate</span>
-                <span class="box-val" style="color: #10b981;">3x</span>
-            </div>
-        </div>
-        <div class="stats-row">
-            <div class="stat-box">
-                <span class="box-label">Mobile Perfect</span>
-                <span class="box-val">100%</span>
-            </div>
-            <div class="stat-box">
-                <span class="box-label">Core Web Vitals</span>
-                <span class="box-val" style="color: #10b981;">95+ Score</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-        </div>
-
         <div class="hero-grid-container">
             <!-- Left Side Content -->
             <div class="hero-left-content">
                 <div class="hero-badge fade-up" style="animation-delay: 0.1s;">
-                    <span class="badge-text">⚡ AI-POWERED 3D EXPERIENCES</span>
+                    <span class="badge-text">⚡ 3D Animated Landing Pages</span>
                 </div>
                 <h1 class="hero-h1 fade-up" style="animation-delay: 0.25s;">
-                    Landing Pages So Good, <br>Customers Remember <br>Your Brand <span class="gradient">Forever.</span>
+                    The Landing Page <br>Your Customers <br><span class="gradient">Won't Forget.</span>
                 </h1>
                 <p class="hero-sub fade-up" style="animation-delay: 0.42s;">
-                    We build 3D animated landing pages that aren't just beautiful — they're built to convert. Fast loading, mobile perfect, and designed to make your brand the obvious choice.
+                    We create high-converting 3D animated landing pages that make your brand unforgettable, build trust instantly, and turn clicks into loyal customers.
                 </p>
+                <div class="hero-chips fade-up" style="animation-delay: 0.5s;">
+                    <span class="hero-chip">
+                        <span class="material-symbols-outlined" style="font-size: 14px;">auto_awesome</span>
+                        Unforgettable Impression
+                    </span>
+                    <span class="hero-chip">
+                        <span class="material-symbols-outlined" style="font-size: 14px;">visibility</span>
+                        Captivate Attention
+                    </span>
+                    <span class="hero-chip">
+                        <span class="material-symbols-outlined" style="font-size: 14px;">verified_user</span>
+                        Instant Trust
+                    </span>
+                    <span class="hero-chip">
+                        <span class="material-symbols-outlined" style="font-size: 14px;">rocket_launch</span>
+                        Seamless Conversion
+                    </span>
+                </div>
                 <div class="hero-btns fade-up" style="animation-delay: 0.62s;">
                     <a href="#contact" class="btn-primary-glow">
                         <span class="btn-arrow">➔</span>
                         <span>Get My Landing Page</span>
                     </a>
-                    <a href="#deliverables" class="btn-secondary-outline">
-                        <span>See Examples ↓</span>
+                    <a href="#pricing" class="btn-secondary-outline">
+                        <span>See Pricing ↓</span>
                     </a>
                 </div>
+                
+                <!-- Upgraded Trust Section -->
+                <div class="hero-trust fade-up" style="animation-delay: 0.8s;">
+                    <div class="trust-group">
+                        <div class="avatar-list">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Felix">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" alt="Aneka">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jack" alt="Jack">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sophia" alt="Sophia">
+                        </div>
+                        <div>
+                            <div class="trust-stars">★★★★★</div>
+                            <div class="trust-rating">5.0 Google Rating | 50+ Brands Scaled</div>
+                        </div>
+                    </div>
+                    <div class="trust-subtext">100% client satisfaction on premium 3D architectures.</div>
+                </div>
             </div>
-            <!-- Right Side Spacer -->
-            <div class="hero-right-placeholder"></div>
+            <!-- Right Side Visual Representation -->
+            <div class="hero-right-content fade-up" style="animation-delay: 0.4s;">
+                <div id="particles-container" style="position: absolute; inset: 0; pointer-events: none; z-index: 1;"></div>
+                <div class="parallax-container">
+                    <div id="parallax-scene">
+                        <!-- Floating Glass Background Shape 1 -->
+                        <div class="parallax-layer animate-rotate-slow" data-depth="0.2" style="top: -40px; left: 10px; z-index: 5;">
+                            <div class="glass-shape" style="width: 80px; height: 80px;"></div>
+                        </div>
+                        
+                        <!-- 3D Browser Centerpiece (Mockup) -->
+                        <div class="parallax-layer animate-float-hero" data-depth="0.5" style="z-index: 20;">
+                            <div class="browser-mockup-3d">
+                                <div class="browser-bar-top">
+                                    <div class="browser-circle c-red"></div>
+                                    <div class="browser-circle c-yellow"></div>
+                                    <div class="browser-circle c-green"></div>
+                                    <div class="browser-url-bar"></div>
+                                </div>
+                                <div class="browser-content-area">
+                                    <img src="portfolio_showcase.png" alt="Flagship Portfolio Landing Page Design" width="440" height="275">
+                                    <div class="browser-overlay-grad"></div>
+                                    <div class="browser-caption">
+                                        <span class="tag">Flagship Showcase</span>
+                                        <h3 class="title">Rare 3D Engine Architecture</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Benefit Card 1: Unforgettable Impression -->
+                        <div class="parallax-layer animate-float-slow" data-depth="0.8" style="top: 20px; right: -30px; z-index: 25;">
+                            <div class="glass-card">
+                                <div class="icon-box col-primary">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
+                                </div>
+                                <div class="card-info">
+                                    <div class="card-title">Unforgettable Impression</div>
+                                    <div class="card-desc">Make your brand impossible to forget</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Benefit Card 2: Captivate Attention -->
+                        <div class="parallax-layer animate-float-medium" data-depth="0.6" style="bottom: 120px; left: -40px; z-index: 22;">
+                            <div class="glass-card">
+                                <div class="icon-box col-secondary">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+                                </div>
+                                <div class="card-info">
+                                    <div class="card-title">Captivate Attention</div>
+                                    <div class="card-desc">Engage visitors from the first second</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Benefit Card 3: Instant Trust -->
+                        <div class="parallax-layer animate-float-fast" data-depth="0.9" style="bottom: 30px; right: -10px; z-index: 26;">
+                            <div class="glass-card">
+                                <div class="icon-box col-tertiary">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">verified_user</span>
+                                </div>
+                                <div class="card-info">
+                                    <div class="card-title">Instant Trust</div>
+                                    <div class="card-desc">Establish authority and build belief</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Benefit Card 4: Seamless Conversion -->
+                        <div class="parallax-layer animate-float-slow" data-depth="0.7" style="top: 140px; left: -20px; z-index: 23;">
+                            <div class="glass-card">
+                                <div class="icon-box col-primary">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">rocket_launch</span>
+                                </div>
+                                <div class="card-info">
+                                    <div class="card-title">Seamless Conversion</div>
+                                    <div class="card-desc">Turn clicks into loyal customers</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Glass Foreground Shape 2 -->
+                        <div class="parallax-layer animate-rotate-slow" data-depth="0.4" style="bottom: -20px; right: 40px; z-index: 27;">
+                            <div class="glass-shape" style="width: 50px; height: 50px; background: radial-gradient(circle, rgba(255, 176, 205, 0.08) 0%, transparent 80%);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -3703,6 +3985,115 @@
                 msg.style.display = 'none';
             }, 3000);
         }
+
+        // 3D Parallax Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const scene = document.getElementById('parallax-scene');
+            const layers = document.querySelectorAll('.parallax-layer');
+            const container = document.querySelector('.hero-right-content');
+
+            if (scene && container) {
+                let currentX = 0;
+                let currentY = 0;
+                let targetX = 0;
+                let targetY = 0;
+
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    // Normalize to -1 to 1
+                    targetX = x / (rect.width / 2);
+                    targetY = y / (rect.height / 2);
+                });
+
+                container.addEventListener('mouseleave', () => {
+                    targetX = 0;
+                    targetY = 0;
+                });
+
+                // Touch support for mobile devices
+                container.addEventListener('touchmove', (e) => {
+                    if (e.touches.length > 0) {
+                        const rect = container.getBoundingClientRect();
+                        const touch = e.touches[0];
+                        const x = touch.clientX - rect.left - rect.width / 2;
+                        const y = touch.clientY - rect.top - rect.height / 2;
+
+                        targetX = x / (rect.width / 2);
+                        targetY = y / (rect.height / 2);
+                    }
+                }, { passive: true });
+
+                container.addEventListener('touchend', () => {
+                    targetX = 0;
+                    targetY = 0;
+                });
+
+                // Smooth interpolation (lerp) loop
+                function animateParallax() {
+                    currentX += (targetX - currentX) * 0.1;
+                    currentY += (targetY - currentY) * 0.1;
+
+                    // Rotate the scene wrapper
+                    const rotateXValue = currentY * -10; // Max 10 degrees tilt
+                    const rotateYValue = currentX * 10;
+                    scene.style.transform = `rotateX(${rotateXValue}deg) rotateY(${rotateYValue}deg)`;
+
+                    // Move layers based on data-depth
+                    layers.forEach(layer => {
+                        const depth = parseFloat(layer.getAttribute('data-depth')) || 0.5;
+                        const moveX = currentX * depth * 35; // Shift max 35px
+                        const moveY = currentY * depth * 35;
+                        
+                        const isMockup = layer.querySelector('.browser-mockup-3d');
+                        if (isMockup) {
+                            layer.style.transform = `translate3d(${moveX}px, ${moveY}px, ${depth * 80}px)`;
+                        } else {
+                            layer.style.transform = `translate3d(${moveX}px, ${moveY}px, ${depth * 50}px)`;
+                        }
+                    });
+
+                    requestAnimationFrame(animateParallax);
+                }
+
+                animateParallax();
+            }
+
+            // Drifting starlight particles
+            const particlesContainer = document.getElementById('particles-container');
+            if (particlesContainer) {
+                const particleCount = 24;
+                for (let i = 0; i < particleCount; i++) {
+                    createParticle(particlesContainer);
+                }
+            }
+
+            function createParticle(parent) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 3 + 1; // 1px to 4px
+                const left = Math.random() * 100; // 0% to 100%
+                const duration = Math.random() * 12 + 8; // 8s to 20s
+                const delay = Math.random() * -20; // start instantly at offset
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.bottom = `-20px`;
+                particle.style.animation = `drift ${duration}s linear infinite`;
+                particle.style.animationDelay = `${delay}s`;
+
+                // Accent colors: purple, pink, cyan, white
+                const colors = ['#d0bcff', '#ffb0cd', '#4cd7f6', '#ffffff'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.boxShadow = `0 0 8px ${particle.style.background}`;
+
+                parent.appendChild(particle);
+            }
+        });
     </script>
     
 </body>
