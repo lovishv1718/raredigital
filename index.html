@@ -4326,8 +4326,74 @@
 
         <!-- Cards Container -->
         <div class="portfolio-cards-container">
-          <!-- Card 1: Mohit Army Store -->
+          <!-- Card 1: Hungryman Designs -->
           <div class="portfolio-card-wrapper" data-index="0">
+            <div
+              class="portfolio-glow-bg"
+              style="
+                background: linear-gradient(
+                  137deg,
+                  #ff5e36 0%,
+                  #ffa232 45%,
+                  #7c3aed 100%
+                );
+              "
+            ></div>
+            <div class="portfolio-foreground-card">
+              <div class="portfolio-browser-mockup">
+                <div class="browser-top-bar">
+                  <div class="browser-dots">
+                    <span class="browser-dot"></span>
+                    <span class="browser-dot"></span>
+                    <span class="browser-dot"></span>
+                  </div>
+                </div>
+                <div class="portfolio-img-wrapper-new">
+                  <img
+                    src="hungryman.jpg"
+                    alt="Hungryman Designs"
+                    class="portfolio-img-new"
+                    loading="lazy"
+                  />
+                  <div class="portfolio-img-overlay-new"></div>
+                </div>
+              </div>
+              <div class="portfolio-content-new">
+                <div class="portfolio-header-row">
+                  <span class="portfolio-tag-new">Creative Agency Hub</span>
+                  <span class="portfolio-status-new">Live & Deployed</span>
+                  <span class="portfolio-concept-badge client-project" style="color: #c084fc; background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.25);">Client Project</span>
+                </div>
+                <h3 class="portfolio-title-new">Hungryman Designs — Creative Studio</h3>
+                <p class="portfolio-desc-new">
+                  Designed and developed a premium, high-converting portfolio website for a visual production studio, featuring cinematic showcases, brand assets, and fluid motion design.
+                </p>
+                <div class="portfolio-chips">
+                  <span class="portfolio-chip">Cinematic Showcase</span>
+                  <span class="portfolio-chip">Fluid Motion</span>
+                  <span class="portfolio-chip">Fully Responsive</span>
+                </div>
+                <div class="portfolio-divider"></div>
+                <div class="portfolio-footer-row">
+                  <div class="portfolio-metrics">
+                    <span class="portfolio-metric">✦ 100% Custom Design</span>
+                    <span class="portfolio-metric">✦ Ultra Fast Load</span>
+                  </div>
+                  <a
+                    href="https://hungrymandesigns.com/"
+                    target="_blank"
+                    class="portfolio-link-new"
+                  >
+                    <span>View Live</span>
+                    <span class="portfolio-link-arrow">➔</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Mohit Army Store -->
+          <div class="portfolio-card-wrapper" data-index="1">
             <div
               class="portfolio-glow-bg"
               style="
@@ -4394,8 +4460,8 @@
             </div>
           </div>
 
-          <!-- Card 2: Mr. Shoe -->
-          <div class="portfolio-card-wrapper" data-index="1">
+          <!-- Card 3: Mr. Shoe -->
+          <div class="portfolio-card-wrapper" data-index="2">
             <div
               class="portfolio-glow-bg"
               style="
@@ -4461,8 +4527,8 @@
             </div>
           </div>
 
-          <!-- Card 3: YashPrinters -->
-          <div class="portfolio-card-wrapper" data-index="2">
+          <!-- Card 4: YashPrinters -->
+          <div class="portfolio-card-wrapper" data-index="3">
             <div
               class="portfolio-glow-bg"
               style="
@@ -4550,12 +4616,13 @@
       <!-- Bottom Controls -->
       <div class="portfolio-controls-bottom">
         <!-- Project Counter -->
-        <div class="portfolio-counter">01 / 03</div>
+        <div class="portfolio-counter">01 / 04</div>
         <!-- Dot Indicators -->
         <div class="portfolio-dots">
-          <span class="portfolio-dot-indicator" data-index="0"></span>
-          <span class="portfolio-dot-indicator active" data-index="1"></span>
+          <span class="portfolio-dot-indicator active" data-index="0"></span>
+          <span class="portfolio-dot-indicator" data-index="1"></span>
           <span class="portfolio-dot-indicator" data-index="2"></span>
+          <span class="portfolio-dot-indicator" data-index="3"></span>
         </div>
       </div>
 
@@ -6562,7 +6629,7 @@
           document.querySelectorAll(".portfolio-dot-indicator"),
         );
 
-        let currentIndex = 1; // Mr. Shoe is center by default
+        let currentIndex = 0; // Hungryman Designs is center by default
         const totalProjects = cards.length;
         let autoplayTimer = null;
         let isHovering = false;
