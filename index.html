@@ -29,6 +29,7 @@
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -460,12 +461,14 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          to right,
-          rgba(6, 6, 8, 1) 0%,
-          rgba(6, 6, 8, 0.4) 30%,
-          rgba(6, 6, 8, 0) 70%
-        );
+        background: 
+          linear-gradient(to bottom, #060608 0%, #060608 80px, transparent 180px),
+          linear-gradient(
+            to right,
+            rgba(6, 6, 8, 1) 0%,
+            rgba(6, 6, 8, 0.4) 30%,
+            rgba(6, 6, 8, 0) 70%
+          );
         z-index: 3;
         pointer-events: none;
       }
@@ -1147,14 +1150,18 @@
         transition: var(--transition);
         position: relative;
         z-index: 2;
+        text-decoration: none;
+        color: inherit;
       }
-      .service-card:hover {
+      .service-card:hover,
+      .service-card:focus-visible {
         transform: translateY(-6px);
         box-shadow:
           0 20px 60px rgba(168, 85, 247, 0.15),
           inset 0 1px 0 rgba(255, 255, 255, 0.08);
         border-color: rgba(168, 85, 247, 0.3);
         border-top-color: var(--primary-accent);
+        outline: none;
       }
       .service-result {
         font-size: 12px;
@@ -3691,7 +3698,7 @@
       </p>
 
       <div class="services-grid">
-        <div class="service-card anim-up2">
+        <a href="paid-ads.html" class="service-card anim-up2">
           <div class="icon-glow-wrapper">
             <svg
               width="24"
@@ -3714,14 +3721,13 @@
             for what you offer — in Ludhiana, Punjab, or anywhere in India. Zero
             guesswork. Pure intent targeting.
           </p>
-          <a
-            href="paid-ads.html"
+          <span
             class="service-result"
-            style="text-decoration: none; display: block"
-            >→ More inquiries from day 7</a
+            style="display: block"
+            >→ More inquiries from day 7</span
           >
-        </div>
-        <div class="service-card anim-up2">
+        </a>
+        <a href="seo.html" class="service-card anim-up2">
           <div class="icon-glow-wrapper">
             <svg
               width="24"
@@ -3743,14 +3749,13 @@
             find you — not your competitor. Local SEO, technical optimization,
             content that ranks.
           </p>
-          <a
-            href="seo.html"
+          <span
             class="service-result"
-            style="text-decoration: none; display: block"
-            >→ Free customers from Google, every day</a
+            style="display: block"
+            >→ Free customers from Google, every day</span
           >
-        </div>
-        <div class="service-card anim-up2">
+        </a>
+        <a href="web-design.html" class="service-card anim-up2">
           <div class="icon-glow-wrapper">
             <svg
               width="24"
@@ -3775,14 +3780,13 @@
             looks stunning on every device, and turns visitors into leads with
             every scroll.
           </p>
-          <a
-            href="web-design.html"
+          <span
             class="service-result"
-            style="text-decoration: none; display: block"
-            >→ Your website works for you 24/7</a
+            style="display: block"
+            >→ Your website works for you 24/7</span
           >
-        </div>
-        <div class="service-card anim-up2">
+        </a>
+        <a href="marketing-automation.html" class="service-card anim-up2">
           <div class="icon-glow-wrapper">
             <svg
               width="24"
@@ -3802,14 +3806,13 @@
             Every lead gets followed up within 60 seconds automatically on
             WhatsApp. Even at 2am. No lead ever falls through the cracks again.
           </p>
-          <a
-            href="marketing-automation.html"
+          <span
             class="service-result"
-            style="text-decoration: none; display: block"
-            >→ 3x more conversions from same leads</a
+            style="display: block"
+            >→ 3x more conversions from same leads</span
           >
-        </div>
-        <div class="service-card anim-up2">
+        </a>
+        <a href="ai-agents.html" class="service-card anim-up2">
           <div class="icon-glow-wrapper">
             <svg
               width="24"
@@ -3834,14 +3837,13 @@
             leads, books appointments, and handles FAQs — without you lifting a
             finger.
           </p>
-          <a
-            href="ai-agents.html"
+          <span
             class="service-result"
-            style="text-decoration: none; display: block"
-            >→ A team member that never sleeps</a
+            style="display: block"
+            >→ A team member that never sleeps</span
           >
-        </div>
-        <div class="service-card anim-up2">
+        </a>
+        <a href="landing-pages.html" class="service-card anim-up2">
           <div class="icon-glow-wrapper">
             <svg
               width="24"
@@ -3864,13 +3866,12 @@
             long after they've closed the tab. The kind of first impression that
             wins business.
           </p>
-          <a
-            href="landing-pages.html"
+          <span
             class="service-result"
-            style="text-decoration: none; display: block"
-            >→ Higher trust, higher conversion</a
+            style="display: block"
+            >→ Higher trust, higher conversion</span
           >
-        </div>
+        </a>
       </div>
     </section>
 
