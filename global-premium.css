@@ -553,17 +553,15 @@
             transform: scale(1.05);
         }
 
-        /* Pain Points */
         .pain-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(2, 1fr); 
             gap: 20px; 
             max-width: 1200px; 
             margin: auto; 
             position: relative;
             z-index: 2;
         }
-        @media (max-width: 1024px) { .pain-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr; } }
         .pain-card-wrapper {
             position: relative;
@@ -3030,13 +3028,16 @@
 
 .insights-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     max-width: 1200px;
     margin: 48px auto 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+    .insights-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
     .insights-grid { grid-template-columns: 1fr; }
 }
 
@@ -6071,5 +6072,26 @@ section.section-pad::before {
     transform: scale(1.01) translateY(-4px) !important;
     border-color: rgba(168, 85, 247, 0.35) !important;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(168, 85, 247, 0.15) !important;
+}
+
+/* 6. Industries Grid 4-Column Balanced Alignment (8 Cards) */
+#industries .services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+    max-width: 1240px !important;
+    margin: 40px auto 0 !important;
+}
+
+@media (max-width: 1100px) {
+    #industries .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    #industries .services-grid {
+        grid-template-columns: 1fr !important;
+    }
 }
 

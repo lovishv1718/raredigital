@@ -886,17 +886,15 @@
             transform: scale(1.05);
         }
 
-        /* Pain Points */
         .pain-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(2, 1fr); 
             gap: 20px; 
             max-width: 1200px; 
             margin: auto; 
             position: relative;
             z-index: 2;
         }
-        @media (max-width: 1024px) { .pain-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr; } }
         .pain-card-wrapper {
             position: relative;
@@ -2845,6 +2843,40 @@
                 right: 2%;
                 bottom: 10px;
             }
+        /* Perfect Grid Alignment & Symmetry Fixes */
+        #why-matters .pain-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          max-width: 1100px;
+        }
+        @media (max-width: 768px) {
+          #why-matters .pain-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
+        #industries .services-grid {
+          grid-template-columns: repeat(4, 1fr) !important;
+          max-width: 1400px;
+        }
+        @media (max-width: 1200px) {
+          #industries .services-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 768px) {
+          #industries .services-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
+        #insights .insights-grid {
+          grid-template-columns: repeat(3, 1fr) !important;
+          max-width: 1200px;
+        }
+        @media (max-width: 900px) {
+          #insights .insights-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
     </style>
 
@@ -2861,7 +2893,6 @@
                 <a href="index.html#services">Services</a>
                 <a href="index.html#how">Process</a>
                 <a href="index.html#portfolio">Results</a>
-                <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQs</a>
             </div>
             <a href="https://calendly.com/lovishv491/30min" target="_blank" rel="noopener noreferrer" class="nav-btn-call">
@@ -2876,7 +2907,6 @@
             <a href="index.html#services" onclick="toggleMenu()">Services</a>
             <a href="index.html#how" onclick="toggleMenu()">Process</a>
             <a href="index.html#portfolio" onclick="toggleMenu()">Results</a>
-            <a href="#pricing" onclick="toggleMenu()">Pricing</a>
             <a href="#faq" onclick="toggleMenu()">FAQs</a>
         </div>
     </nav>
@@ -3359,7 +3389,7 @@
             <!-- Dynamic Outcome Cards Grid -->
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px;">
                 <div class="dashboard-metric-card" id="metricCard1" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; text-align: left;">
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">CONVERSION RATE</div>
+                    <div id="metricCardTitle1" style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">CONVERSION RATE</div>
                     <div id="metricCardVal1" style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: #ffffff; margin-bottom: 6px;">14.8%</div>
                     <div id="metricCardSub1" style="font-size: 12px; display: flex; align-items: center; gap: 6px;">
                         <span style="color: #10b981; font-weight: 700; background: rgba(16, 185, 129, 0.15); padding: 2px 8px; border-radius: 99px;">↑ +310% Lift</span>
@@ -3368,7 +3398,7 @@
                 </div>
 
                 <div class="dashboard-metric-card" id="metricCard2" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; text-align: left;">
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">RENDER SPEED</div>
+                    <div id="metricCardTitle2" style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">RENDER SPEED</div>
                     <div id="metricCardVal2" style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: #ffffff; margin-bottom: 6px;">0.4s</div>
                     <div id="metricCardSub2" style="font-size: 12px; display: flex; align-items: center; gap: 6px;">
                         <span style="color: #10b981; font-weight: 700; background: rgba(16, 185, 129, 0.15); padding: 2px 8px; border-radius: 99px;">⚡ Instant Render</span>
@@ -3377,7 +3407,7 @@
                 </div>
 
                 <div class="dashboard-metric-card" id="metricCard3" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; text-align: left;">
-                    <div style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">ROAS MULTIPLIER</div>
+                    <div id="metricCardTitle3" style="font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">ROAS MULTIPLIER</div>
                     <div id="metricCardVal3" style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: #ffffff; margin-bottom: 6px;">3.4x ROAS</div>
                     <div id="metricCardSub3" style="font-size: 12px; display: flex; align-items: center; gap: 6px;">
                         <span style="color: #10b981; font-weight: 700; background: rgba(16, 185, 129, 0.15); padding: 2px 8px; border-radius: 99px;">⚡ Verified ROI</span>
@@ -3385,69 +3415,6 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="section-pad">
-        <div class="ambient-glow" style="top: 15%; right: -150px; background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);"></div>
-        <div class="ambient-glow" style="bottom: 15%; left: -150px; background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);"></div>
-
-        <p class="section-tag">TRANSPARENT PRICING</p>
-        <h2 class="section-h2">Simple Pricing. <span class="gradient">No Hidden Costs.</span> No Lock-in Contracts.</h2>
-        <p class="section-sub">Every plan includes full ownership of everything we build. Cancel anytime after month one.</p>
-        
-        <div class="pricing-grid" style="margin-top: 48px;">
-            
-<div class="pricing-card anim-price">
-    <h3 class="pricing-name">Starter</h3>
-    <p class="pricing-sub">Perfect for local businesses and single-service landing pages</p>
-    <div class="pricing-price">₹15,000<span> one-time</span></div>
-    <ul class="pricing-features">
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>1 page custom landing page</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Basic scroll animations</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Lead capture form setup</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Mobile responsive</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>WhatsApp integration</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Domain &amp; hosting setup guide</li>
-    </ul>
-    <p class="pricing-roi">Best for: Local service providers aiming for quick conversion</p>
-    <a href="#contact" class="btn-secondary btn-full text-center" style="display: block; text-decoration: none; text-align: center;">Get Started &rarr;</a>
-</div>
-<div class="pricing-card growth active anim-price">
-    <div class="pricing-badge">MOST POPULAR</div>
-    <h3 class="pricing-name">Growth</h3>
-    <p class="pricing-sub">For businesses that need a full multi-page website with 3D design</p>
-    <div class="pricing-price">₹28,000<span> one-time</span></div>
-    <ul class="pricing-features">
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Up to 5 pages (Home, About, Services, Pricing, Contact)</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Full 3D animations</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Custom GSAP scroll effects</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>WhatsApp + CRM integration</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Core Web Vitals optimised</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>1 month post-launch support</li>
-    </ul>
-    <p class="pricing-roi" style="color: white;">Best for: Businesses ready to scale with premium design</p>
-    <a href="#contact" class="btn-primary btn-full text-center" style="display: block; text-decoration: none; text-align: center;">Start Growing &rarr;</a>
-</div>
-<div class="pricing-card anim-price">
-    <h3 class="pricing-name">Pro</h3>
-    <p class="pricing-sub">For high-end brands that need a premium custom web application</p>
-    <div class="pricing-price">₹50,000<span> one-time</span></div>
-    <ul class="pricing-features">
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Custom 3D animated web application</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Unlimited pages</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>AI chatbot integration</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Advanced WhatsApp automation</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Full CRM integration</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>3 months post-launch support</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Dedicated UI/UX designer</li>
-        <li><svg class="feature-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Priority support</li>
-    </ul>
-    <p class="pricing-roi">Best for: Enterprises needing maximum digital dominance</p>
-    <a href="#contact" class="btn-secondary btn-full text-center" style="display: block; text-decoration: none; text-align: center;">Go Pro &rarr;</a>
-</div>
 
         </div>
     </section>
@@ -4329,6 +4296,7 @@
                 parent.appendChild(particle);
             }
         });
+    </script>
     <!-- Interactive Performance Dashboard Controller Script -->
     <script>
       (function() {
@@ -4342,7 +4310,7 @@
               { month: "Week 3 (Tuning)", val: "11.5% Conversion", bench: "⚡ Sub-Second Asset Optimization" },
               { month: "Launch+ (Scale)", val: "14.8% Conversion Peak", bench: "⚡ 3.4x Scaled Conversion Lift" }
             ],
-            metrics: { val1: "14.8%", sub1: "↑ +310% Lift", val2: "0.4s", sub2: "⚡ Instant Render", val3: "3.4x ROAS", sub3: "⚡ Verified ROI" }
+            metrics: { title1: "CONVERSION RATE", val1: "14.8%", sub1: "↑ +310% Lift", title2: "RENDER SPEED", val2: "0.4s", sub2: "⚡ Instant Render", title3: "ROAS MULTIPLIER", val3: "3.4x ROAS", sub3: "⚡ Verified ROI" }
           },
           speed: {
             curve: "M 80 220 C 270 170, 480 60, 860 30",
@@ -4353,7 +4321,7 @@
               { month: "Week 3 (Tuning)", val: "0.6s Load", bench: "⚡ Deferred Script & GPU Hardware Acceleration" },
               { month: "Launch+ (Scale)", val: "0.4s Sub-Second", bench: "⚡ 99/100 Google Lighthouse Score" }
             ],
-            metrics: { val1: "0.4s", sub1: "↑ Sub-Second", val2: "14.8%", sub2: "⚡ High Conv", val3: "99/100", sub3: "⚡ Perfect Score" }
+            metrics: { title1: "RENDER SPEED", val1: "0.4s", sub1: "↑ Sub-Second", title2: "CONVERSION RATE", val2: "14.8%", sub2: "⚡ High Conv", title3: "LIGHTHOUSE SCORE", val3: "99/100", sub3: "⚡ Perfect Score" }
           },
           bounce: {
             curve: "M 80 215 C 260 175, 460 65, 860 28",
@@ -4364,7 +4332,7 @@
               { month: "Week 3 (Tuning)", val: "-58% Bounce", bench: "⚡ Smooth GSAP Scroll Storytelling" },
               { month: "Launch+ (Scale)", val: "-64% Bounce Reduction", bench: "⚡ Maximum Visitor Retention" }
             ],
-            metrics: { val1: "-64%", sub1: "↑ Low Bounce", val2: "14.8%", sub2: "⚡ High Conv", val3: "0.4s", sub3: "⚡ Instant Load" }
+            metrics: { title1: "BOUNCE REDUCTION", val1: "-64%", sub1: "↑ Low Bounce", title2: "CONVERSION LIFT", val2: "14.8%", sub2: "⚡ High Conv", title3: "RENDER SPEED", val3: "0.4s", sub3: "⚡ Instant Load" }
           },
           roas: {
             curve: "M 80 225 C 280 160, 490 50, 860 20",
@@ -4375,7 +4343,7 @@
               { month: "Week 3 (Tuning)", val: "2.8x ROAS", bench: "⚡ Multi-Step Lead Intake Optimization" },
               { month: "Launch+ (Scale)", val: "3.4x ROAS Multiplier", bench: "⚡ Maximum Return On Ad Spend" }
             ],
-            metrics: { val1: "3.4x ROAS", sub1: "↑ Scaled ROI", val2: "14.8%", sub2: "⚡ Conv Peak", val3: "0.4s", sub3: "⚡ Instant Render" }
+            metrics: { title1: "ROAS MULTIPLIER", val1: "3.4x ROAS", sub1: "↑ Scaled ROI", title2: "CONVERSION LIFT", val2: "14.8%", sub2: "⚡ Conv Peak", title3: "RENDER SPEED", val3: "0.4s", sub3: "⚡ Instant Render" }
           }
         };
 
@@ -4389,7 +4357,7 @@
               { month: "Week 3 (Template)", val: "2.1% Conversion", bench: "🔴 Weak Call-To-Action Placement" },
               { month: "Launch+ (Template)", val: "2.4% Stagnant", bench: "🔴 Wasted Ad Budget & Poor ROAS" }
             ],
-            metrics: { val1: "2.4%", sub1: "↓ Low Yield", val2: "4.2s", sub2: "🔴 Slow Load", val3: "1.1x ROAS", sub3: "🔴 Break-Even" }
+            metrics: { title1: "CONVERSION RATE", val1: "2.4%", sub1: "↓ Low Yield", title2: "RENDER SPEED", val2: "4.2s", sub2: "🔴 Slow Load", title3: "ROAS MULTIPLIER", val3: "1.1x ROAS", sub3: "🔴 Break-Even" }
           },
           speed: {
             curve: "M 80 225 C 300 220, 600 215, 860 210",
@@ -4400,7 +4368,7 @@
               { month: "Week 3 (Template)", val: "4.4s Load", bench: "🔴 Unused CSS & Render-Blocking JS" },
               { month: "Launch+ (Template)", val: "4.2s Slow", bench: "🔴 52/100 Poor Lighthouse Score" }
             ],
-            metrics: { val1: "4.2s", sub1: "↓ Heavy Lag", val2: "2.4%", sub2: "🔴 Low Yield", val3: "52/100", sub3: "🔴 Poor Score" }
+            metrics: { title1: "RENDER SPEED", val1: "4.2s", sub1: "↓ Heavy Lag", title2: "CONVERSION RATE", val2: "2.4%", sub2: "🔴 Low Yield", title3: "LIGHTHOUSE SCORE", val3: "52/100", sub3: "🔴 Poor Score" }
           },
           bounce: {
             curve: "M 80 222 C 300 218, 600 212, 860 208",
@@ -4411,7 +4379,7 @@
               { month: "Week 3 (Template)", val: "62% Bounce Rate", bench: "🔴 Slow Form Loading Delay" },
               { month: "Launch+ (Template)", val: "60% High Bounce", bench: "🔴 60%+ Mobile Visitor Loss" }
             ],
-            metrics: { val1: "60%", sub1: "↓ High Exit", val2: "2.4%", sub2: "🔴 Low Yield", val3: "4.2s", sub3: "🔴 Heavy Lag" }
+            metrics: { title1: "BOUNCE RATE", val1: "60%", sub1: "↓ High Exit", title2: "CONVERSION RATE", val2: "2.4%", sub2: "🔴 Low Yield", title3: "RENDER SPEED", val3: "4.2s", sub3: "🔴 Heavy Lag" }
           },
           roas: {
             curve: "M 80 228 C 300 224, 600 218, 860 212",
@@ -4422,7 +4390,7 @@
               { month: "Week 3 (Template)", val: "1.0x ROAS", bench: "🔴 Zero Margin Growth" },
               { month: "Launch+ (Template)", val: "1.1x Stagnant", bench: "🔴 Flatline Return On Ad Spend" }
             ],
-            metrics: { val1: "1.1x ROAS", sub1: "↓ Low Return", val2: "2.4%", sub2: "🔴 Low Yield", val3: "60%", sub3: "🔴 Wasted Ad Spend" }
+            metrics: { title1: "ROAS MULTIPLIER", val1: "1.1x ROAS", sub1: "↓ Low Return", title2: "CONVERSION RATE", val2: "2.4%", sub2: "🔴 Low Yield", title3: "BOUNCE RATE", val3: "60%", sub3: "🔴 Wasted Ad Spend" }
           }
         };
 
@@ -4447,13 +4415,20 @@
             areaPath.setAttribute("fill", isRare ? "url(#rareAreaGrad)" : "rgba(239, 68, 68, 0.12)");
           }
 
-          // Update Outcome Cards
+          // Update Outcome Cards Titles & Values
+          const t1 = document.getElementById("metricCardTitle1");
+          const t2 = document.getElementById("metricCardTitle2");
+          const t3 = document.getElementById("metricCardTitle3");
           const val1 = document.getElementById("metricCardVal1");
           const val2 = document.getElementById("metricCardVal2");
           const val3 = document.getElementById("metricCardVal3");
           const sub1 = document.getElementById("metricCardSub1");
           const sub2 = document.getElementById("metricCardSub2");
           const sub3 = document.getElementById("metricCardSub3");
+
+          if (t1 && data.metrics.title1) t1.innerText = data.metrics.title1;
+          if (t2 && data.metrics.title2) t2.innerText = data.metrics.title2;
+          if (t3 && data.metrics.title3) t3.innerText = data.metrics.title3;
 
           if (val1) val1.innerText = data.metrics.val1;
           if (val2) val2.innerText = data.metrics.val2;
@@ -4487,11 +4462,11 @@
           const btnBase = document.getElementById("engine-mode-base");
 
           if (mode === 'rare') {
-            if (btnRare) { btnRare.style.background = "var(--purple-accent)"; btnRare.style.color = "white"; }
-            if (btnBase) { btnBase.style.background = "transparent"; btnBase.style.color = "rgba(255,255,255,0.6)"; }
+            if (btnRare) { btnRare.classList.add("active"); btnRare.style.background = "var(--primary-accent)"; btnRare.style.color = "white"; }
+            if (btnBase) { btnBase.classList.remove("active"); btnBase.style.background = "transparent"; btnBase.style.color = "rgba(255,255,255,0.6)"; }
           } else {
-            if (btnBase) { btnBase.style.background = "rgba(239, 68, 68, 0.9)"; btnBase.style.color = "white"; }
-            if (btnRare) { btnRare.style.background = "transparent"; btnRare.style.color = "rgba(255,255,255,0.6)"; }
+            if (btnBase) { btnBase.classList.add("active"); btnBase.style.background = "rgba(239, 68, 68, 0.9)"; btnBase.style.color = "white"; }
+            if (btnRare) { btnRare.classList.remove("active"); btnRare.style.background = "transparent"; btnRare.style.color = "rgba(255,255,255,0.6)"; }
           }
           updateDashboardUI();
         };
