@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+    <defs>
+        <!-- Background Radial Gradient -->
+        <radialGradient id="bg-glow" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#0d111d"/>
+            <stop offset="50%" stop-color="#04060a"/>
+            <stop offset="100%" stop-color="#000000"/>
+        </radialGradient>
+
+        <!-- Liquid Chrome Gradient (Ultra Glossy, Multi-Stop) -->
+        <linearGradient id="chrome-fill" x1="20%" y1="10%" x2="80%" y2="90%">
+            <stop offset="0%" stop-color="#2d3033"/>
+            <stop offset="8%" stop-color="#ffffff"/>
+            <stop offset="16%" stop-color="#a6acb0"/>
+            <stop offset="28%" stop-color="#484c4f"/>
+            <stop offset="38%" stop-color="#ffffff"/>
+            <stop offset="52%" stop-color="#b6bcbf"/>
+            <stop offset="65%" stop-color="#282a2c"/>
+            <stop offset="78%" stop-color="#ffffff"/>
+            <stop offset="88%" stop-color="#898e92"/>
+            <stop offset="100%" stop-color="#1e2021"/>
+        </linearGradient>
+
+        <!-- Chrome Bevel Stroke Gradient -->
+        <linearGradient id="chrome-stroke" x1="20%" y1="10%" x2="80%" y2="90%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+            <stop offset="20%" stop-color="#7e8386" stop-opacity="0.4"/>
+            <stop offset="40%" stop-color="#ffffff" stop-opacity="0.95"/>
+            <stop offset="60%" stop-color="#4e5254" stop-opacity="0.3"/>
+            <stop offset="80%" stop-color="#ffffff" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#3e4142" stop-opacity="0.8"/>
+        </linearGradient>
+
+        <!-- High-Fidelity 3D Shadow for Monogram and Text -->
+        <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <!-- Soft environmental shadow -->
+            <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.95"/>
+            <!-- Sharp contact shadow -->
+            <feDropShadow dx="2" dy="2" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.7"/>
+        </filter>
+
+        <!-- Blue Glow Radial Gradient for Background Aura -->
+        <radialGradient id="blue-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#0080ff" stop-opacity="0.75"/>
+            <stop offset="35%" stop-color="#0040ff" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Blue Square Fill Gradient -->
+        <linearGradient id="blue-square-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c6e7ff"/>
+            <stop offset="30%" stop-color="#3fa2ff"/>
+            <stop offset="70%" stop-color="#0055ff"/>
+            <stop offset="100%" stop-color="#0011aa"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Background Group -->
+    <g id="Background">
+        <rect width="100%" height="100%" fill="url(#bg-glow)"/>
+    </g>
+
+    <!-- Ambient Glow Group -->
+    <g id="Ambient-Glow">
+        <!-- Soft blue ambient light behind the logo -->
+        <circle cx="340" cy="245" r="120" fill="url(#blue-glow)"/>
+    </g>
+
+    <!-- Monogram Main Group -->
+    <g id="Monogram" filter="url(#drop-shadow)">
+        <!-- 1. The Monogram Main R (Loop + Leg) -->
+        <path d="M 353 79 
+                 H 452 
+                 C 502 79, 542 119, 542 169 
+                 C 542 219, 502 259, 452 259 
+                 C 440 259, 428 255, 418 248
+                 L 499 329
+                 L 527 301
+                 L 435 209
+                 C 455 209, 482 191, 482 169
+                 C 482 147, 455 129, 435 129
+                 H 393
+                 Z" 
+              fill="url(#chrome-fill)" 
+              stroke="url(#chrome-stroke)" 
+              stroke-width="2.2" 
+              stroke-linejoin="round"/>
+
+        <!-- 2. The Left Wedge Triangle -->
+        <path d="M 338 122 
+                 V 208 
+                 H 424 
+                 Z" 
+              fill="url(#chrome-fill)" 
+              stroke="url(#chrome-stroke)" 
+              stroke-width="2.2" 
+              stroke-linejoin="round"/>
+    </g>
+
+    <!-- Glowing Blue Square Group -->
+    <g id="Blue-Square">
+        <!-- Outer Glow Ring -->
+        <rect x="331" y="238" width="18" height="18" rx="3" fill="none" stroke="#0080ff" stroke-width="2.5" opacity="0.4" filter="url(#drop-shadow)"/>
+        <!-- Inner Glowing Square -->
+        <rect x="333" y="240" width="14" height="14" rx="2" fill="url(#blue-square-grad)" stroke="#dff3ff" stroke-width="1.5"/>
+    </g>
+
+    <!-- RARE Text Group (Filled Paths with Chrome Texture) -->
+    <g id="Text-RARE" filter="url(#drop-shadow)">
+        <!-- R (First) -->
+        <path d="M 276 348 
+                 C 255 348, 248 360, 248 375 
+                 C 248 390, 255 402, 276 402 
+                 C 281 402, 286 400, 290 397
+                 L 286 389
+                 C 282 392, 279 394, 276 394
+                 C 262 394, 256 385, 256 375
+                 C 256 365, 262 356, 276 356
+                 C 279 356, 282 358, 286 361
+                 L 290 353
+                 C 286 350, 281 348, 276 348 Z
+                 M 285 348 
+                 H 302 
+                 C 316 348, 318 360, 318 371 
+                 C 318 382, 310 388, 298 388 
+                 H 293 
+                 V 402 
+                 H 285 
+                 Z
+                 M 293 356 
+                 V 380 
+                 H 298 
+                 C 306 380, 310 376, 310 368 
+                 C 310 360, 306 356, 298 356 
+                 Z
+                 M 302 388
+                 L 316 402
+                 H 328
+                 L 312 386
+                 H 302
+                 Z" 
+              fill="url(#chrome-fill)" 
+              stroke="url(#chrome-stroke)" 
+              stroke-width="1" 
+              stroke-linejoin="round"/>
+
+        <!-- A -->
+        <path d="M 353 348 
+                 L 333 402 
+                 H 342 
+                 L 348 385 
+                 H 364 
+                 L 358 368
+                 L 353 354
+                 L 349 368
+                 L 345 380
+                 H 339
+                 L 353 348 Z
+                 M 353 348 
+                 L 373 402 
+                 H 364 
+                 L 358 385 
+                 H 348
+                 L 354 368
+                 Z
+                 M 348 385
+                 H 364
+                 V 380
+                 H 348
+                 Z" 
+              fill="url(#chrome-fill)" 
+              stroke="url(#chrome-stroke)" 
+              stroke-width="1" 
+              stroke-linejoin="round"/>
+
+        <!-- R (Second) -->
+        <path d="M 444 348 
+                 C 423 348, 416 360, 416 375 
+                 C 416 390, 423 402, 444 402 
+                 C 449 402, 454 400, 458 397
+                 L 454 389
+                 C 450 392, 447 394, 444 394
+                 C 430 394, 424 385, 424 375
+                 C 424 365, 430 356, 444 356
+                 C 447 356, 450 358, 454 361
+                 L 458 353
+                 C 454 350, 449 348, 444 348 Z
+                 M 453 348 
+                 H 470 
+                 C 484 348, 486 360, 486 371 
+                 C 486 382, 478 388, 466 388 
+                 H 461 
+                 V 402 
+                 H 453 
+                 Z
+                 M 461 356 
+                 V 380 
+                 H 466 
+                 C 474 380, 478 376, 478 368 
+                 C 478 360, 474 356, 466 356 
+                 Z
+                 M 470 388
+                 L 484 402
+                 H 496
+                 L 480 386
+                 H 470
+                 Z" 
+              fill="url(#chrome-fill)" 
+              stroke="url(#chrome-stroke)" 
+              stroke-width="1" 
+              stroke-linejoin="round"/>
+
+        <!-- E -->
+        <path d="M 526 348 
+                 V 402 
+                 H 554 
+                 V 394 
+                 H 534 
+                 V 378 
+                 H 550 
+                 V 370 
+                 H 534 
+                 V 356 
+                 H 554 
+                 V 348 
+                 Z" 
+              fill="url(#chrome-fill)" 
+              stroke="url(#chrome-stroke)" 
+              stroke-width="1" 
+              stroke-linejoin="round"/>
+    </g>
+
+    <!-- DIGITAL Subtext Group -->
+    <g id="Text-DIGITAL">
+        <text x="393" y="432" 
+              font-family="'Space Grotesk', 'Inter', 'Arial', sans-serif" 
+              font-size="10.5" 
+              font-weight="600" 
+              fill="#8cb2ff" 
+              letter-spacing="18.5" 
+              text-anchor="middle" 
+              opacity="0.85">DIGITAL</text>
+    </g>
+</svg>

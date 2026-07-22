@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludhiana Location Portals | Rare Digital Agency</title>
+    <meta name="description" content="Explore Rare Digital's specialized local business growth portals for Ludhiana, Punjab. Access customized SEO, Paid Ads, Web Design, and AI Automation hubs.">
+    <link rel="canonical" href="https://raredigital.in/locations/index.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raredigital.in/locations/index.html">
+    <meta property="og:title" content="Ludhiana Location Portals | Rare Digital Agency">
+    <meta property="og:description" content="Explore Rare Digital's local business growth portals for Ludhiana, Punjab. Access customized SEO, Paid Ads, Web Design, and AI Automation hubs.">
+    <meta property="og:image" content="https://raredigital.in/rare_digital.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/favicon_rare.svg">
+    <link rel="icon" type="image/png" href="/favicon_rare.png">
+    <link rel="apple-touch-icon" href="/favicon_rare.png">
+
+    <style>
+        :root {
+            --bg-primary: #060608;
+            --bg-cards: #0f0f0f;
+            --bg-elevated: #111318;
+            --primary-accent: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.15);
+            --border-default: rgba(255, 255, 255, 0.07);
+            --border-hover: rgba(168, 85, 247, 0.4);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --text-muted: rgba(255, 255, 255, 0.28);
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-serif: 'Instrument Serif', serif;
+            --radius-cards: 20px;
+            --radius-buttons: 10px;
+            --radius-pills: 9999px;
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        #nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(6, 6, 8, 0.92);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-default);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: 300ms;
+        }
+
+        .logo:hover {
+            transform: scale(1.03);
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            transition: 0.25s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn-call {
+            background: rgba(168, 85, 247, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 12px 24px;
+            border-radius: var(--radius-pills);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+        }
+
+        .nav-btn-call:hover {
+            background: rgba(168, 85, 247, 0.15);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.35);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 40px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border-radius: var(--radius-pills);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            background: rgba(168, 85, 247, 0.06);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            color: #d8b4fe;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gradient {
+            background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 40%, #a855f7 70%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Locations Grid */
+        .grid-section {
+            padding: 20px 40px 80px;
+            flex-grow: 1;
+        }
+
+        .grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid var(--border-default);
+            border-radius: var(--radius-cards);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.4), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.05);
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card.placeholder {
+            border-style: dashed;
+            opacity: 0.65;
+        }
+
+        .card-header {
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: var(--radius-pills);
+            font-size: 9px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .badge.active {
+            background: rgba(168, 85, 247, 0.15);
+            color: #d8b4fe;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .badge.coming-soon {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-default);
+        }
+
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .card-btn {
+            margin-top: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .card-btn:hover {
+            color: var(--primary-accent);
+            transform: translateX(4px);
+        }
+
+        .card-btn.disabled {
+            color: var(--text-muted);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-default);
+            background-color: var(--bg-elevated);
+            padding: 40px 40px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-btn-call {
+                display: none;
+            }
+            .hero {
+                padding: 120px 20px 40px;
+            }
+            .grid-section {
+                padding: 20px 20px 60px;
+            }
+            .nav-container {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://raredigital.in/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Locations",
+        "item": "https://raredigital.in/locations/index.html"
+      }]
+    }
+    </script>
+</head>
+<body>
+
+    <nav id="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../rare_digital.webp" alt="Rare Digital Logo">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html#services">Services</a>
+                <a href="../index.html#how">Process</a>
+                <a href="../index.html#portfolio">Results</a>
+            </div>
+            <a href="https://calendly.com/lovishv491/30min" target="_blank" rel="noopener noreferrer" class="nav-btn-call">
+                <span>BOOK FREE CALL</span>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-glow"></div>
+            <span class="section-tag">Punjab Operations</span>
+            <h1>Ludhiana <span class="gradient">Growth Portals.</span></h1>
+            <p class="hero-desc">Select a specialized local portal below to access performance marketing metrics, local SEO frameworks, and AI automation engines custom-built for the Ludhiana business ecosystem.</p>
+        </section>
+
+        <section class="grid-section">
+            <div class="grid-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge active">Active Hub</span>
+                        <h3 class="card-title">SEO Services Portal</h3>
+                        <p class="card-desc">Advanced technical audits, local map optimization strategies, and entity-based content frameworks designed to drive organic search dominance in Ludhiana.</p>
+                    </div>
+                    <a href="seo-agency-ludhiana.html" class="card-btn">Access Portal &rarr;</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge active">Active Hub</span>
+                        <h3 class="card-title">Digital Marketing Portal</h3>
+                        <p class="card-desc">ROI-focused localized strategies, Meta & Google PPC management, lead capture engineering, and automated sales follow-up workflows for regional Punjab clinics and service brands.</p>
+                    </div>
+                    <a href="digital-marketing-agency-ludhiana.html" class="card-btn">Access Portal &rarr;</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge active">Active Hub</span>
+                        <h3 class="card-title">Google Ads &amp; PPC Portal</h3>
+                        <p class="card-desc">Dedicated dashboard representing search marketing, display ads, retargeting funnels, and localized PPC spend benchmarks for regional manufacturing and retail groups.</p>
+                    </div>
+                    <a href="google-ads-agency-ludhiana.html" class="card-btn">Access Portal &rarr;</a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge active">Active Hub</span>
+                        <h3 class="card-title">Web Design &amp; Dev Portal</h3>
+                        <p class="card-desc">Mobile-responsive conversion architectures, custom-coded layouts, and search-optimized database configurations for local business scale.</p>
+                    </div>
+                    <a href="web-design-company-ludhiana.html" class="card-btn">Access Portal &rarr;</a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge active">Active Hub</span>
+                        <h3 class="card-title">AI Agents &amp; Automation Portal</h3>
+                        <p class="card-desc">Deploy custom conversational AI chat assistants, automated WhatsApp notification systems, and CRM integrations to streamline manual operations.</p>
+                    </div>
+                    <a href="ai-automation-agency-ludhiana.html" class="card-btn">Access Portal &rarr;</a>
+                </div>
+            
+                <!-- Card 6 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge active">Active Hub</span>
+                        <h3 class="card-title">Local SEO &amp; Maps Portal</h3>
+                        <p class="card-desc">Dominate local map searches and increase geographical coverage in civil lines, model town, dugri, sarabha nagar, and focal point neighborhoods.</p>
+                    </div>
+                    <a href="local-seo-ludhiana.html" class="card-btn">Access Portal &rarr;</a>
+                </div>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            &copy; 2026 Rare Digital. All rights reserved. Ludhiana, Punjab, India.
+        </div>
+    </footer>
+
+</body>
+</html>

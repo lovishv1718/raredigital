@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Insights Hub | Rare Digital Agency</title>
+    <meta name="description" content="Explore technical guides, entity SEO frameworks, speed optimization tactics, and performance marketing strategies from Rare Digital's engineering team.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../favicon_rare.png">
+    <link rel="stylesheet" href="../global-premium.css">
+    <style>
+      :root {
+        --bg-obsidian: #060608;
+        --purple-accent: #a855f7;
+        --border-glass: rgba(255, 255, 255, 0.08);
+      }
+      body {
+        background-color: var(--bg-obsidian);
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+      }
+      .hub-header {
+        padding: 140px 20px 60px;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .hub-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 52px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .serif-italic {
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-style: italic;
+        font-weight: 400;
+      }
+      .hub-sub {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1200px;
+        margin: 40px auto 100px;
+        padding: 0 20px;
+      }
+      @media (max-width: 1024px) {
+        .articles-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 768px) {
+        .articles-grid { grid-template-columns: 1fr; }
+        .hub-title { font-size: 36px; }
+      }
+      .article-card {
+        background: rgba(15, 15, 22, 0.65);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border-glass);
+        border-radius: 16px;
+        padding: 32px;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: border-color 0.3s, transform 0.3s;
+      }
+      .article-card:hover {
+        border-color: rgba(168, 85, 247, 0.4);
+        transform: translateY(-4px);
+      }
+      .article-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--purple-accent);
+        margin-bottom: 12px;
+        display: block;
+      }
+      .article-card h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 12px;
+        line-height: 1.3;
+      }
+      .article-card p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+      .article-link-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: #c084fc;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav id="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../rare_digital.webp" alt="Rare Digital Logo">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html#services">Services</a>
+                <a href="../index.html#how">Process</a>
+                <a href="../index.html#portfolio">Results</a>
+                <a href="../index.html#faq">FAQs</a>
+            </div>
+            <a href="https://calendly.com/lovishv491/30min" target="_blank" rel="noopener noreferrer" class="nav-btn-call">
+                <span>BOOK FREE CALL</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hub Header -->
+    <header class="hub-header">
+        <p class="section-tag" style="text-align: center;">KNOWLEDGE BASE</p>
+        <h1 class="hub-title">Rare Digital <span class="serif-italic gradient">Insights Hub</span></h1>
+        <p class="hub-sub">Technical guides, entity search frameworks, speed optimization tactics, and closed-loop attribution models engineered by our team.</p>
+    </header>
+
+    <!-- Articles Grid -->
+    <div class="articles-grid">
+        <a href="seo/entity-based-seo-guide.html" class="article-card">
+            <div>
+                <span class="article-tag">SEO Architecture</span>
+                <h3>Entity-First Knowledge Graphs</h3>
+                <p>How Google evaluates brand relationships and semantic search nodes to dictate ranking success.</p>
+            </div>
+            <span class="article-link-text">Read Guide &rarr;</span>
+        </a>
+
+        <a href="seo/enterprise-crawl-budget-optimization.html" class="article-card">
+            <div>
+                <span class="article-tag">Speed & Auditing</span>
+                <h3>Enterprise Crawl Budget Optimization</h3>
+                <p>Evaluating server crawl budgets, database index errors, and Core Web Vitals to optimize indexing frequencies.</p>
+            </div>
+            <span class="article-link-text">Read Guide &rarr;</span>
+        </a>
+
+        <a href="ludhiana/seo-services-for-ludhiana-businesses.html" class="article-card">
+            <div>
+                <span class="article-tag">Topical Authority</span>
+                <h3>Constructing Content Clusters</h3>
+                <p>How mapping sub-topics and content loops secures long-term topical dominance for high-intent search terms.</p>
+            </div>
+            <span class="article-link-text">Read Guide &rarr;</span>
+        </a>
+
+        <a href="ludhiana/local-seo-for-ludhiana-businesses.html" class="article-card">
+            <div>
+                <span class="article-tag">Local Search</span>
+                <h3>Local SEO & Map Pack Domination</h3>
+                <p>Optimizing Google Business Profiles and local entity citations for high-intent nearby buyers.</p>
+            </div>
+            <span class="article-link-text">Read Guide &rarr;</span>
+        </a>
+
+        <a href="ludhiana/how-to-choose-a-digital-marketing-agency-in-ludhiana.html" class="article-card">
+            <div>
+                <span class="article-tag">Agency Evaluation</span>
+                <h3>Evaluating Digital Agencies</h3>
+                <p>How enterprise brands map acquisition channels and evaluate technical execution over vanity metrics.</p>
+            </div>
+            <span class="article-link-text">Read Guide &rarr;</span>
+        </a>
+    </div>
+
+</body>
+</html>

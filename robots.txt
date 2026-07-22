@@ -1,0 +1,19 @@
+# RareDigital Robots.txt
+User-agent: *
+Allow: /
+
+# Allow AI Search Crawlers for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap
+Sitemap: https://raredigital.in/sitemap.xml
